@@ -146,45 +146,61 @@ export default function OnboardingWizard({ usuarioId, onComplete }: OnboardingWi
   ];
 
   return (
-    <div className="min-h-screen bg-gray-950 flex items-center justify-center p-4">
-      <div className="w-full max-w-lg bg-gray-900 rounded-2xl border border-gray-800 shadow-2xl overflow-hidden">
-        {/* Progress Bar */}
-        <div className="flex gap-1 p-4">
+    <div className="min-h-screen bg-slate-50 flex flex-col items-center justify-center p-4 sm:p-6">
+      {/* Canny-style brand indicator */}
+      <div className="mb-6 flex items-center space-x-2">
+        <div className="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center text-white shadow-sm shadow-indigo-100">
+          <span className="font-bold text-sm">IA</span>
+        </div>
+        <span className="font-bold text-base text-slate-900 tracking-tight">Tráfego IA <span className="text-indigo-600">Delivery</span></span>
+      </div>
+
+      <div className="w-full max-w-lg bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden">
+        {/* Progress Bar - Canny Style */}
+        <div className="flex gap-1.5 p-6 pb-0">
           {[1, 2, 3, 4].map(s => (
             <div
               key={s}
               className={`h-1.5 flex-1 rounded-full transition-all duration-300 ${
-                s <= step ? 'bg-blue-500' : 'bg-gray-700'
+                s <= step ? 'bg-indigo-600' : 'bg-slate-200'
               }`}
             />
           ))}
         </div>
 
-        <div className="px-8 pb-8">
+        <div className="p-6 sm:p-8">
           {/* Step Header */}
-          <p className="text-blue-400 text-sm font-medium mb-1">Passo {step} de 4</p>
-          <h2 className="text-2xl font-bold text-white mb-2">{stepTitles[step - 1]}</h2>
-          <p className="text-gray-400 text-sm mb-6">{stepDescriptions[step - 1]}</p>
+          <div className="mb-6">
+            <span className="inline-block text-[11px] font-semibold text-indigo-600 uppercase tracking-wider bg-indigo-50 border border-indigo-100 px-2.5 py-0.5 rounded-full mb-2">
+              Passo {step} de 4
+            </span>
+            <h2 className="text-2xl font-bold text-slate-900 tracking-tight">{stepTitles[step - 1]}</h2>
+            <p className="text-slate-500 text-sm mt-1 leading-relaxed">{stepDescriptions[step - 1]}</p>
+          </div>
 
           {/* Step 1: Dados Básicos */}
           {step === 1 && (
             <div className="space-y-4">
               <div>
-                <label className="block text-sm text-gray-300 mb-1.5">Nome do seu negócio *</label>
+                <label className="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1.5">
+                  Nome do seu negócio *
+                </label>
                 <input
                   type="text"
                   value={nome}
                   onChange={e => setNome(e.target.value)}
                   placeholder="Ex: Pizzaria Bella Napoli"
-                  className="w-full bg-gray-800 text-white rounded-lg px-4 py-3 border border-gray-700 focus:border-blue-500 focus:outline-none"
+                  className="w-full bg-white text-slate-900 rounded-xl px-4 py-3 border border-slate-200 text-sm focus:border-indigo-600 focus:ring-2 focus:ring-indigo-500/10 focus:outline-none transition-all shadow-sm"
                 />
               </div>
               <div>
-                <label className="block text-sm text-gray-300 mb-1.5">Tipo do negócio</label>
+                <label className="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1.5">
+                  Tipo do negócio
+                </label>
                 <select
                   value={segmento}
                   onChange={e => setSegmento(e.target.value)}
-                  className="w-full bg-gray-800 text-white rounded-lg px-4 py-3 border border-gray-700 focus:border-blue-500 focus:outline-none"
+                  className="w-full bg-white text-slate-900 rounded-xl px-4 py-3 border border-slate-200 text-sm focus:border-indigo-600 focus:ring-2 focus:ring-indigo-500/10 focus:outline-none transition-all shadow-sm font-medium"
                 >
                   <option value="">Selecione...</option>
                   {SEGMENTOS.map(s => (
@@ -194,24 +210,28 @@ export default function OnboardingWizard({ usuarioId, onComplete }: OnboardingWi
               </div>
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-sm text-gray-300 mb-1.5">Cidade</label>
+                  <label className="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1.5">
+                    Cidade
+                  </label>
                   <input
                     type="text"
                     value={cidade}
                     onChange={e => setCidade(e.target.value)}
                     placeholder="Ex: Feira de Santana"
-                    className="w-full bg-gray-800 text-white rounded-lg px-4 py-3 border border-gray-700 focus:border-blue-500 focus:outline-none"
+                    className="w-full bg-white text-slate-900 rounded-xl px-4 py-3 border border-slate-200 text-sm focus:border-indigo-600 focus:ring-2 focus:ring-indigo-500/10 focus:outline-none transition-all shadow-sm"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm text-gray-300 mb-1.5">Estado</label>
+                  <label className="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1.5">
+                    Estado
+                  </label>
                   <input
                     type="text"
                     value={estado}
                     onChange={e => setEstado(e.target.value)}
                     placeholder="Ex: BA"
                     maxLength={2}
-                    className="w-full bg-gray-800 text-white rounded-lg px-4 py-3 border border-gray-700 focus:border-blue-500 focus:outline-none uppercase"
+                    className="w-full bg-white text-slate-900 rounded-xl px-4 py-3 border border-slate-200 text-sm focus:border-indigo-600 focus:ring-2 focus:ring-indigo-500/10 focus:outline-none transition-all shadow-sm uppercase font-semibold"
                   />
                 </div>
               </div>
@@ -222,50 +242,58 @@ export default function OnboardingWizard({ usuarioId, onComplete }: OnboardingWi
           {step === 2 && (
             <div className="space-y-4">
               <div>
-                <label className="block text-sm text-gray-300 mb-1.5">Até quantos km você entrega?</label>
+                <label className="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1.5">
+                  Até quantos km você entrega?
+                </label>
                 <div className="relative">
                   <input
                     type="number"
                     value={raioAtendimento}
                     onChange={e => setRaioAtendimento(e.target.value)}
                     placeholder="Ex: 8"
-                    className="w-full bg-gray-800 text-white rounded-lg px-4 py-3 pr-12 border border-gray-700 focus:border-blue-500 focus:outline-none"
+                    className="w-full bg-white text-slate-900 rounded-xl px-4 py-3 pr-12 border border-slate-200 text-sm focus:border-indigo-600 focus:ring-2 focus:ring-indigo-500/10 focus:outline-none transition-all shadow-sm"
                   />
-                  <span className="absolute right-4 top-3.5 text-gray-500 text-sm">km</span>
+                  <span className="absolute right-4 top-3.5 text-slate-400 text-sm font-medium">km</span>
                 </div>
               </div>
               <div>
-                <label className="block text-sm text-gray-300 mb-1.5">Qual o valor médio de um pedido?</label>
+                <label className="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1.5">
+                  Qual o valor médio de um pedido?
+                </label>
                 <div className="relative">
-                  <span className="absolute left-4 top-3.5 text-gray-500 text-sm">R$</span>
+                  <span className="absolute left-4 top-3.5 text-slate-400 text-sm font-medium">R$</span>
                   <input
                     type="number"
                     step="0.01"
                     value={ticketMedio}
                     onChange={e => setTicketMedio(e.target.value)}
                     placeholder="Ex: 78.50"
-                    className="w-full bg-gray-800 text-white rounded-lg pl-10 pr-4 py-3 border border-gray-700 focus:border-blue-500 focus:outline-none"
+                    className="w-full bg-white text-slate-900 rounded-xl pl-12 pr-4 py-3 border border-slate-200 text-sm focus:border-indigo-600 focus:ring-2 focus:ring-indigo-500/10 focus:outline-none transition-all shadow-sm font-medium"
                   />
                 </div>
               </div>
               <div>
-                <label className="block text-sm text-gray-300 mb-1.5">Quem são seus clientes?</label>
+                <label className="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1.5">
+                  Quem são seus clientes?
+                </label>
                 <input
                   type="text"
                   value={publicoAlvo}
                   onChange={e => setPublicoAlvo(e.target.value)}
                   placeholder="Ex: Famílias e jovens adultos 18-45 anos"
-                  className="w-full bg-gray-800 text-white rounded-lg px-4 py-3 border border-gray-700 focus:border-blue-500 focus:outline-none"
+                  className="w-full bg-white text-slate-900 rounded-xl px-4 py-3 border border-slate-200 text-sm focus:border-indigo-600 focus:ring-2 focus:ring-indigo-500/10 focus:outline-none transition-all shadow-sm"
                 />
               </div>
               <div>
-                <label className="block text-sm text-gray-300 mb-1.5">Descrição curta do negócio</label>
+                <label className="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1.5">
+                  Descrição curta do negócio
+                </label>
                 <textarea
                   value={descricao}
                   onChange={e => setDescricao(e.target.value)}
                   placeholder="Ex: Pizzaria artesanal com delivery rápido e ingredientes selecionados"
                   rows={2}
-                  className="w-full bg-gray-800 text-white rounded-lg px-4 py-3 border border-gray-700 focus:border-blue-500 focus:outline-none resize-none"
+                  className="w-full bg-white text-slate-900 rounded-xl px-4 py-3 border border-slate-200 text-sm focus:border-indigo-600 focus:ring-2 focus:ring-indigo-500/10 focus:outline-none transition-all shadow-sm resize-none"
                 />
               </div>
             </div>
@@ -275,40 +303,44 @@ export default function OnboardingWizard({ usuarioId, onComplete }: OnboardingWi
           {step === 3 && (
             <div className="space-y-4">
               <div>
-                <label className="block text-sm text-gray-300 mb-1.5">Qual o horário mais forte de pedidos?</label>
+                <label className="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1.5">
+                  Qual o horário mais forte de pedidos?
+                </label>
                 <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <span className="block text-xs text-gray-500 mb-1">De</span>
+                    <span className="block text-[11px] font-medium text-slate-500 mb-1">De</span>
                     <input
                       type="time"
                       value={horarioInicio}
                       onChange={e => setHorarioInicio(e.target.value)}
-                      className="w-full bg-gray-800 text-white rounded-lg px-4 py-3 border border-gray-700 focus:border-blue-500 focus:outline-none"
+                      className="w-full bg-white text-slate-900 rounded-xl px-4 py-2.5 border border-slate-200 text-sm focus:border-indigo-600 focus:ring-2 focus:ring-indigo-500/10 focus:outline-none shadow-sm"
                     />
                   </div>
                   <div>
-                    <span className="block text-xs text-gray-500 mb-1">Até</span>
+                    <span className="block text-[11px] font-medium text-slate-500 mb-1">Até</span>
                     <input
                       type="time"
                       value={horarioFim}
                       onChange={e => setHorarioFim(e.target.value)}
-                      className="w-full bg-gray-800 text-white rounded-lg px-4 py-3 border border-gray-700 focus:border-blue-500 focus:outline-none"
+                      className="w-full bg-white text-slate-900 rounded-xl px-4 py-2.5 border border-slate-200 text-sm focus:border-indigo-600 focus:ring-2 focus:ring-indigo-500/10 focus:outline-none shadow-sm"
                     />
                   </div>
                 </div>
               </div>
               <div>
-                <label className="block text-sm text-gray-300 mb-2">Quais dias você mais vende?</label>
+                <label className="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-2">
+                  Quais dias você mais vende?
+                </label>
                 <div className="flex flex-wrap gap-2">
                   {DIAS.map(dia => (
                     <button
                       key={dia}
                       type="button"
                       onClick={() => toggleDia(dia)}
-                      className={`px-3 py-1.5 rounded-full text-sm font-medium transition-all ${
+                      className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all ${
                         diasFortes.includes(dia)
-                          ? 'bg-blue-600 text-white'
-                          : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
+                          ? 'bg-indigo-600 text-white shadow-sm'
+                          : 'bg-slate-100 text-slate-600 border border-slate-200/80 hover:bg-slate-200 hover:text-slate-900'
                       }`}
                     >
                       {dia.charAt(0).toUpperCase() + dia.slice(1)}
@@ -317,13 +349,15 @@ export default function OnboardingWizard({ usuarioId, onComplete }: OnboardingWi
                 </div>
               </div>
               <div>
-                <label className="block text-sm text-gray-300 mb-1.5">Qual seu produto mais vendido?</label>
+                <label className="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1.5">
+                  Qual seu produto mais vendido?
+                </label>
                 <input
                   type="text"
                   value={produtoMaisVendido}
                   onChange={e => setProdutoMaisVendido(e.target.value)}
                   placeholder="Ex: Pizza Família Especial"
-                  className="w-full bg-gray-800 text-white rounded-lg px-4 py-3 border border-gray-700 focus:border-blue-500 focus:outline-none"
+                  className="w-full bg-white text-slate-900 rounded-xl px-4 py-3 border border-slate-200 text-sm focus:border-indigo-600 focus:ring-2 focus:ring-indigo-500/10 focus:outline-none transition-all shadow-sm"
                 />
               </div>
             </div>
@@ -332,26 +366,28 @@ export default function OnboardingWizard({ usuarioId, onComplete }: OnboardingWi
           {/* Step 4: Prefiro Delivery */}
           {step === 4 && (
             <div className="space-y-4">
-              <div className="bg-blue-950/30 border border-blue-900/50 rounded-xl p-4">
-                <p className="text-blue-300 text-sm">
+              <div className="bg-indigo-50/80 border border-indigo-100 rounded-xl p-4">
+                <p className="text-indigo-900 text-sm leading-relaxed">
                   💡 Se você já usa a Prefiro Delivery, informe o slug do seu estabelecimento.
                   Vamos importar seus produtos automaticamente.
                 </p>
               </div>
               <div>
-                <label className="block text-sm text-gray-300 mb-1.5">Slug na Prefiro Delivery</label>
-                <div className="flex items-center bg-gray-800 rounded-lg border border-gray-700 focus-within:border-blue-500">
-                  <span className="text-gray-500 text-sm pl-4">prefirodelivery.com/</span>
+                <label className="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1.5">
+                  Slug na Prefiro Delivery
+                </label>
+                <div className="flex items-center bg-white rounded-xl border border-slate-200 focus-within:border-indigo-600 focus-within:ring-2 focus-within:ring-indigo-500/10 shadow-sm overflow-hidden">
+                  <span className="text-slate-400 text-sm pl-4 font-medium">prefirodelivery.com/</span>
                   <input
                     type="text"
                     value={slugPrefiro}
                     onChange={e => setSlugPrefiro(e.target.value)}
                     placeholder="seu-negocio"
-                    className="flex-1 bg-transparent text-white py-3 pr-4 focus:outline-none"
+                    className="flex-1 bg-transparent text-slate-900 py-3 pr-4 focus:outline-none text-sm font-medium"
                   />
                 </div>
               </div>
-              <p className="text-gray-500 text-xs">
+              <p className="text-slate-500 text-xs">
                 Você pode pular esta etapa e conectar depois em Configurações → Integrações.
               </p>
             </div>
@@ -359,8 +395,8 @@ export default function OnboardingWizard({ usuarioId, onComplete }: OnboardingWi
 
           {/* Error */}
           {error && (
-            <div className="mt-4 p-3 bg-red-950/50 border border-red-900/50 rounded-lg">
-              <p className="text-red-400 text-sm">{error}</p>
+            <div className="mt-4 p-3.5 bg-rose-50 border border-rose-200 rounded-xl">
+              <p className="text-rose-700 text-sm font-medium">{error}</p>
             </div>
           )}
 
@@ -370,7 +406,7 @@ export default function OnboardingWizard({ usuarioId, onComplete }: OnboardingWi
               <button
                 onClick={() => setStep(step - 1)}
                 disabled={loading}
-                className="px-6 py-3 rounded-lg border border-gray-700 text-gray-300 hover:bg-gray-800 transition-all disabled:opacity-50"
+                className="px-5 py-2.5 rounded-xl border border-slate-200 text-slate-700 bg-white hover:bg-slate-50 font-medium text-sm transition-all shadow-sm disabled:opacity-50"
               >
                 Voltar
               </button>
@@ -378,7 +414,7 @@ export default function OnboardingWizard({ usuarioId, onComplete }: OnboardingWi
             <button
               onClick={submitStep}
               disabled={loading}
-              className="flex-1 px-6 py-3 rounded-lg bg-blue-600 text-white font-medium hover:bg-blue-500 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+              className="flex-1 px-6 py-2.5 rounded-xl bg-indigo-600 text-white font-semibold text-sm hover:bg-indigo-700 transition-all shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {loading ? (
                 <span className="flex items-center justify-center gap-2">

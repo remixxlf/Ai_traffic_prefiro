@@ -74,7 +74,7 @@ export default function HomePage() {
       icon: BarChart3,
       href: `/dashboard?empresaId=${selectedEmpresaId}`,
       badge: 'Tempo Real',
-      color: 'from-blue-600 to-indigo-600'
+      iconStyle: 'bg-indigo-50 text-indigo-600 border border-indigo-100'
     },
     {
       title: 'Onboarding & Memória de Negócio',
@@ -82,7 +82,7 @@ export default function HomePage() {
       icon: Store,
       href: '/onboarding',
       badge: 'Wizard Guiado',
-      color: 'from-emerald-600 to-teal-600'
+      iconStyle: 'bg-emerald-50 text-emerald-600 border border-emerald-100'
     },
     {
       title: 'Hub de Integrações',
@@ -90,7 +90,7 @@ export default function HomePage() {
       icon: Layers,
       href: `/integracoes?empresaId=${selectedEmpresaId}`,
       badge: 'Meta & Delivery',
-      color: 'from-violet-600 to-purple-600'
+      iconStyle: 'bg-blue-50 text-blue-600 border border-blue-100'
     },
     {
       title: 'Catálogo & Campanhas de Pratos',
@@ -98,7 +98,7 @@ export default function HomePage() {
       icon: Layers,
       href: `/catalogo?empresaId=${selectedEmpresaId}`,
       badge: 'Auto-Sync',
-      color: 'from-amber-600 to-orange-600'
+      iconStyle: 'bg-amber-50 text-amber-600 border border-amber-100'
     },
     {
       title: 'Gestão de Campanhas',
@@ -106,7 +106,7 @@ export default function HomePage() {
       icon: TrendingUp,
       href: `/campanhas?empresaId=${selectedEmpresaId}`,
       badge: 'Campanhas',
-      color: 'from-cyan-600 to-blue-600'
+      iconStyle: 'bg-sky-50 text-sky-600 border border-sky-100'
     },
     {
       title: 'Copywriting com IA',
@@ -114,7 +114,7 @@ export default function HomePage() {
       icon: Sparkles,
       href: `/copywriting?empresaId=${selectedEmpresaId}`,
       badge: 'Groq 70B',
-      color: 'from-pink-600 to-rose-600'
+      iconStyle: 'bg-rose-50 text-rose-600 border border-rose-100'
     },
     {
       title: 'Biblioteca de Criativos & Fadiga',
@@ -122,7 +122,7 @@ export default function HomePage() {
       icon: ImageIcon,
       href: `/criativos?empresaId=${selectedEmpresaId}`,
       badge: 'Detector Fadiga',
-      color: 'from-amber-500 to-yellow-600'
+      iconStyle: 'bg-orange-50 text-orange-600 border border-orange-100'
     },
     {
       title: 'Públicos & Segmentação LGPD',
@@ -130,7 +130,7 @@ export default function HomePage() {
       icon: Users,
       href: `/publicos?empresaId=${selectedEmpresaId}`,
       badge: 'LGPD Seguro',
-      color: 'from-emerald-600 to-green-700'
+      iconStyle: 'bg-teal-50 text-teal-600 border border-teal-100'
     },
     {
       title: 'Saúde da Conta & Rastreamento',
@@ -138,7 +138,7 @@ export default function HomePage() {
       icon: ShieldCheck,
       href: `/rastreamento?empresaId=${selectedEmpresaId}`,
       badge: 'Health Score',
-      color: 'from-teal-600 to-cyan-600'
+      iconStyle: 'bg-cyan-50 text-cyan-600 border border-cyan-100'
     },
     {
       title: 'Automações & Guardrails',
@@ -146,7 +146,7 @@ export default function HomePage() {
       icon: Zap,
       href: `/automacoes?empresaId=${selectedEmpresaId}`,
       badge: 'Guardrails',
-      color: 'from-red-600 to-orange-600'
+      iconStyle: 'bg-violet-50 text-violet-600 border border-violet-100'
     },
     {
       title: 'Minha IA & Central de Aprovações',
@@ -154,7 +154,7 @@ export default function HomePage() {
       icon: Cpu,
       href: `/minha-ia?empresaId=${selectedEmpresaId}`,
       badge: 'Controle Total',
-      color: 'from-indigo-600 to-blue-700'
+      iconStyle: 'bg-indigo-50 text-indigo-600 border border-indigo-100'
     },
     {
       title: 'Chat IA, Relatórios & Alertas',
@@ -162,35 +162,35 @@ export default function HomePage() {
       icon: MessageSquare,
       href: `/chat?empresaId=${selectedEmpresaId}`,
       badge: 'Assistente IA',
-      color: 'from-purple-600 to-pink-600'
+      iconStyle: 'bg-purple-50 text-purple-600 border border-purple-100'
     }
   ];
 
   return (
-    <div className="min-h-screen bg-gray-950 text-gray-100 flex flex-col font-sans">
-      {/* Top Navbar */}
-      <header className="border-b border-gray-800 bg-gray-900/60 backdrop-blur-md sticky top-0 z-50">
+    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col font-sans">
+      {/* Top Navbar - Clean Canny style */}
+      <header className="border-b border-slate-200/80 bg-white/95 backdrop-blur-sm sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-orange-500 to-amber-400 flex items-center justify-center shadow-lg shadow-orange-500/20">
-              <Bot className="w-6 h-6 text-gray-950" />
+            <div className="w-9 h-9 rounded-xl bg-indigo-600 flex items-center justify-center text-white shadow-sm shadow-indigo-200">
+              <Bot className="w-5 h-5" />
             </div>
             <div>
-              <span className="font-bold text-lg text-white tracking-tight">
-                Tráfego IA <span className="text-orange-400">Delivery</span>
+              <span className="font-bold text-base sm:text-lg text-slate-900 tracking-tight">
+                Tráfego IA <span className="text-indigo-600">Delivery</span>
               </span>
-              <p className="text-xs text-gray-400">Meta Ads + Prefiro Delivery</p>
+              <p className="text-[11px] text-slate-500 font-medium">Meta Ads + Prefiro Delivery</p>
             </div>
           </div>
 
           <div className="flex items-center space-x-3">
-            <div className="hidden md:flex items-center space-x-2 text-xs text-gray-400 bg-gray-800/80 px-3 py-1.5 rounded-lg border border-gray-700">
-              <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <div className="hidden md:flex items-center space-x-2 text-xs text-slate-600 bg-slate-100/80 px-3 py-1.5 rounded-full border border-slate-200">
+              <span className="inline-block w-2 h-2 rounded-full bg-emerald-500"></span>
               <span>Llama 3.3 70B & Guardrails 20%</span>
             </div>
             <Link
               href="/onboarding"
-              className="inline-flex items-center space-x-1.5 bg-orange-500 hover:bg-orange-600 text-gray-950 font-semibold text-xs px-3.5 py-2 rounded-lg transition"
+              className="inline-flex items-center space-x-1.5 bg-indigo-600 hover:bg-indigo-700 text-white font-medium text-xs px-3.5 py-2 rounded-lg transition shadow-sm"
             >
               <PlusCircle className="w-4 h-4" />
               <span>Novo Restaurante</span>
@@ -201,56 +201,53 @@ export default function HomePage() {
 
       {/* Main Container */}
       <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
-        {/* Hero Banner */}
-        <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-gray-900 via-gray-900/90 to-gray-950 border border-gray-800 p-8 mb-8 shadow-2xl">
-          <div className="absolute -right-16 -bottom-16 w-80 h-80 bg-orange-500/10 rounded-full blur-3xl pointer-events-none"></div>
-          <div className="absolute -left-16 -top-16 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
-
-          <div className="max-w-3xl relative z-10">
-            <div className="inline-flex items-center space-x-2 bg-orange-500/10 border border-orange-500/20 px-3 py-1 rounded-full text-xs text-orange-400 font-medium mb-4">
-              <Sparkles className="w-3.5 h-3.5" />
+        {/* Hero Banner - Canny Clean Style */}
+        <div className="bg-white rounded-2xl border border-slate-200/80 p-8 sm:p-10 mb-8 shadow-sm">
+          <div className="max-w-3xl">
+            <div className="inline-flex items-center space-x-2 bg-indigo-50 border border-indigo-100 px-3 py-1 rounded-full text-xs text-indigo-700 font-medium mb-4">
+              <Sparkles className="w-3.5 h-3.5 text-indigo-600" />
               <span>Plataforma SaaS B2B de Gestão de Tráfego com IA</span>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight mb-4">
+            <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight leading-tight mb-3">
               Anúncios inteligentes no Meta Ads conectados ao cardápio do seu restaurante.
             </h1>
-            <p className="text-gray-300 text-base leading-relaxed mb-6">
+            <p className="text-slate-600 text-base leading-relaxed mb-6 font-normal">
               Automação completa para delivery: ingestão de catálogo XML, cálculo de ROAS real com vendas do balcão,
               detecção de fadiga de criativos, geração de copys com IA e guardrails de segurança orçamentária.
             </p>
 
-            {/* Status pills */}
+            {/* Status pills - Canny style */}
             <div className="flex flex-wrap gap-2 text-xs">
-              <span className="bg-gray-800 border border-gray-700 text-gray-300 px-3 py-1.5 rounded-lg flex items-center space-x-1.5">
-                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+              <span className="bg-slate-50 border border-slate-200 text-slate-700 px-3 py-1.5 rounded-lg flex items-center space-x-1.5 font-medium">
+                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
                 <span>Meta Graph API v20</span>
               </span>
-              <span className="bg-gray-800 border border-gray-700 text-gray-300 px-3 py-1.5 rounded-lg flex items-center space-x-1.5">
-                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+              <span className="bg-slate-50 border border-slate-200 text-slate-700 px-3 py-1.5 rounded-lg flex items-center space-x-1.5 font-medium">
+                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
                 <span>Cardápio Prefiro Delivery</span>
               </span>
-              <span className="bg-gray-800 border border-gray-700 text-gray-300 px-3 py-1.5 rounded-lg flex items-center space-x-1.5">
-                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+              <span className="bg-slate-50 border border-slate-200 text-slate-700 px-3 py-1.5 rounded-lg flex items-center space-x-1.5 font-medium">
+                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
                 <span>Groq Llama 3.3 70B</span>
               </span>
-              <span className="bg-gray-800 border border-gray-700 text-gray-300 px-3 py-1.5 rounded-lg flex items-center space-x-1.5">
-                <ShieldCheck className="w-3.5 h-3.5 text-orange-400" />
+              <span className="bg-slate-50 border border-slate-200 text-slate-700 px-3 py-1.5 rounded-lg flex items-center space-x-1.5 font-medium">
+                <ShieldCheck className="w-3.5 h-3.5 text-indigo-600" />
                 <span>Guardrails Orçamentários</span>
               </span>
             </div>
           </div>
         </div>
 
-        {/* Company Context Selector / Quick Seed */}
-        <div className="bg-gray-900 border border-gray-800 rounded-2xl p-6 mb-8">
+        {/* Company Context Selector */}
+        <div className="bg-white border border-slate-200/80 rounded-2xl p-6 mb-8 shadow-sm">
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
             <div>
               <div className="flex items-center space-x-2">
-                <Store className="w-5 h-5 text-orange-400" />
-                <h2 className="text-lg font-bold text-white">Empresa Selecionada para Navegação</h2>
+                <Store className="w-5 h-5 text-indigo-600" />
+                <h2 className="text-lg font-bold text-slate-900">Empresa Selecionada para Navegação</h2>
               </div>
-              <p className="text-sm text-gray-400 mt-1">
+              <p className="text-sm text-slate-500 mt-1">
                 {selectedEmpresa
                   ? `${selectedEmpresa.nome} • ${selectedEmpresa.segmento || 'Restaurante'} • ${selectedEmpresa.cidade || ''}/${selectedEmpresa.estado || ''}`
                   : 'Nenhuma empresa ativa selecionada no momento.'}
@@ -263,7 +260,7 @@ export default function HomePage() {
                   <select
                     value={selectedEmpresaId}
                     onChange={(e) => setSelectedEmpresaId(e.target.value)}
-                    className="bg-gray-800 border border-gray-700 text-white text-sm rounded-xl px-4 py-2.5 focus:ring-2 focus:ring-orange-500 focus:outline-none"
+                    className="bg-slate-50 border border-slate-200 text-slate-900 text-sm rounded-xl px-4 py-2.5 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 focus:outline-none font-medium"
                   >
                     {empresas.map((emp) => (
                       <option key={emp.id} value={emp.id}>
@@ -276,41 +273,41 @@ export default function HomePage() {
 
               <Link
                 href="/onboarding"
-                className="inline-flex items-center space-x-2 bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-gray-950 font-bold text-sm px-4 py-2.5 rounded-xl transition shadow-lg shadow-orange-500/20"
+                className="inline-flex items-center space-x-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium text-sm px-4 py-2.5 rounded-xl transition shadow-sm"
               >
-                <PlusCircle className="w-4 h-4 text-gray-950" />
+                <PlusCircle className="w-4 h-4 text-white" />
                 <span>Novo Restaurante</span>
               </Link>
             </div>
           </div>
 
           {selectedEmpresa && (
-            <div className="mt-4 pt-4 border-t border-gray-800/80 grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs text-gray-300">
-              <div className="bg-gray-950/60 p-2.5 rounded-xl border border-gray-800">
-                <span className="text-gray-500 block">Modo de Operação</span>
-                <span className="font-semibold text-orange-400">{selectedEmpresa.modo_operacao}</span>
+            <div className="mt-5 pt-4 border-t border-slate-100 grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs text-slate-700">
+              <div className="bg-slate-50 p-3 rounded-xl border border-slate-200/60">
+                <span className="text-slate-500 block text-[11px]">Modo de Operação</span>
+                <span className="font-semibold text-indigo-600">{selectedEmpresa.modo_operacao}</span>
               </div>
-              <div className="bg-gray-950/60 p-2.5 rounded-xl border border-gray-800">
-                <span className="text-gray-500 block">Campanhas Ativas</span>
-                <span className="font-semibold text-white">{selectedEmpresa._count?.campanhas ?? 2} cadastradas</span>
+              <div className="bg-slate-50 p-3 rounded-xl border border-slate-200/60">
+                <span className="text-slate-500 block text-[11px]">Campanhas Ativas</span>
+                <span className="font-semibold text-slate-900">{selectedEmpresa._count?.campanhas ?? 2} cadastradas</span>
               </div>
-              <div className="bg-gray-950/60 p-2.5 rounded-xl border border-gray-800">
-                <span className="text-gray-500 block">Cardápio & Itens</span>
-                <span className="font-semibold text-white">{selectedEmpresa._count?.meta_produtos ?? 4} sincronizados</span>
+              <div className="bg-slate-50 p-3 rounded-xl border border-slate-200/60">
+                <span className="text-slate-500 block text-[11px]">Cardápio & Itens</span>
+                <span className="font-semibold text-slate-900">{selectedEmpresa._count?.meta_produtos ?? 4} sincronizados</span>
               </div>
-              <div className="bg-gray-950/60 p-2.5 rounded-xl border border-gray-800">
-                <span className="text-gray-500 block">Aprovações IA</span>
-                <span className="font-semibold text-white">{selectedEmpresa._count?.aprovacoes ?? 1} pendente</span>
+              <div className="bg-slate-50 p-3 rounded-xl border border-slate-200/60">
+                <span className="text-slate-500 block text-[11px]">Aprovações IA</span>
+                <span className="font-semibold text-slate-900">{selectedEmpresa._count?.aprovacoes ?? 1} pendente</span>
               </div>
             </div>
           )}
         </div>
 
-        {/* Modules Grid */}
+        {/* Modules Grid Header */}
         <div className="mb-6 flex items-center justify-between">
           <div>
-            <h2 className="text-xl font-bold text-white tracking-tight">Módulos do Sistema</h2>
-            <p className="text-sm text-gray-400">Acesse qualquer ferramenta da plataforma diretamente:</p>
+            <h2 className="text-xl font-bold text-slate-900 tracking-tight">Módulos do Sistema</h2>
+            <p className="text-sm text-slate-500">Acesse qualquer ferramenta da plataforma diretamente:</p>
           </div>
         </div>
 
@@ -323,27 +320,27 @@ export default function HomePage() {
               <Link
                 key={idx}
                 href={targetHref}
-                className="group relative bg-gray-900/90 hover:bg-gray-850 border border-gray-800 hover:border-gray-700 rounded-2xl p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-xl flex flex-col justify-between"
+                className="group relative bg-white hover:bg-slate-50/50 border border-slate-200/80 hover:border-slate-300 rounded-2xl p-6 transition-all duration-200 shadow-sm hover:shadow-md flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <div className={`w-12 h-12 rounded-xl bg-gradient-to-tr ${mod.color} flex items-center justify-center shadow-md group-hover:scale-110 transition-transform`}>
-                      <Icon className="w-6 h-6 text-white" />
+                    <div className={`w-11 h-11 rounded-xl ${mod.iconStyle} flex items-center justify-center transition-transform group-hover:scale-105`}>
+                      <Icon className="w-5 h-5" />
                     </div>
-                    <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-gray-800 border border-gray-700 text-gray-300">
+                    <span className="text-[11px] font-medium px-2.5 py-1 rounded-full bg-slate-100 text-slate-600 border border-slate-200/70">
                       {mod.badge}
                     </span>
                   </div>
 
-                  <h3 className="text-base font-bold text-white group-hover:text-orange-400 transition-colors mb-2">
+                  <h3 className="text-base font-semibold text-slate-900 group-hover:text-indigo-600 transition-colors mb-2">
                     {mod.title}
                   </h3>
-                  <p className="text-xs text-gray-400 leading-relaxed">
+                  <p className="text-xs text-slate-500 leading-relaxed font-normal">
                     {mod.desc}
                   </p>
                 </div>
 
-                <div className="mt-5 pt-4 border-t border-gray-800/80 flex items-center justify-between text-xs font-medium text-gray-400 group-hover:text-orange-400 transition-colors">
+                <div className="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-medium text-slate-500 group-hover:text-indigo-600 transition-colors">
                   <span>Acessar Módulo</span>
                   <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
                 </div>
@@ -353,17 +350,17 @@ export default function HomePage() {
         </div>
 
         {/* Rodapé Comercial Limpo */}
-        <footer className="mt-16 pt-8 border-t border-gray-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500">
+        <footer className="mt-16 pt-8 border-t border-slate-200/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
           <div className="flex items-center space-x-2">
-            <span className="font-semibold text-gray-300">Tráfego IA Delivery</span>
+            <span className="font-semibold text-slate-700">Tráfego IA Delivery</span>
             <span>—</span>
             <span>Plataforma SaaS de Gestão e Otimização de Anúncios para Restaurantes</span>
           </div>
-          <div className="flex items-center space-x-6 text-gray-400">
-            <Link href="/onboarding" className="hover:text-orange-400 transition">Novo Restaurante</Link>
-            <Link href="/dashboard" className="hover:text-orange-400 transition">Dashboard</Link>
-            <Link href="/rastreamento" className="hover:text-orange-400 transition">Saúde da Conta</Link>
-            <span className="text-gray-600">© 2026 • Todos os direitos reservados</span>
+          <div className="flex items-center space-x-6 text-slate-500">
+            <Link href="/onboarding" className="hover:text-indigo-600 transition">Novo Restaurante</Link>
+            <Link href="/dashboard" className="hover:text-indigo-600 transition">Dashboard</Link>
+            <Link href="/rastreamento" className="hover:text-indigo-600 transition">Saúde da Conta</Link>
+            <span className="text-slate-400">© 2026 • Todos os direitos reservados</span>
           </div>
         </footer>
       </main>

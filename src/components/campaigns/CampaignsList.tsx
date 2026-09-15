@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
@@ -40,8 +40,8 @@ export default function CampaignsList({ empresaId }: CampaignsListProps) {
 
   if (loading) {
     return (
-      <div className="bg-gray-900 rounded-2xl border border-gray-800 p-8 text-center text-gray-400">
-        <span className="inline-block w-5 h-5 border-2 border-blue-500 border-t-transparent rounded-full animate-spin mr-2" />
+      <div className="bg-white rounded-2xl border border-slate-200/80 p-8 text-center text-slate-500 shadow-sm">
+        <span className="inline-block w-5 h-5 border-2 border-indigo-600 border-t-transparent rounded-full animate-spin mr-2" />
         Carregando campanhas ativas...
       </div>
     );
@@ -51,14 +51,14 @@ export default function CampaignsList({ empresaId }: CampaignsListProps) {
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
-          <h2 className="text-xl font-bold text-white">Minhas Campanhas</h2>
-          <p className="text-gray-400 text-sm">
+          <h2 className="text-xl font-bold text-slate-900 tracking-tight">Minhas Campanhas</h2>
+          <p className="text-slate-500 text-sm">
             Gerenciamento simplificado dos seus anúncios no Meta Ads.
           </p>
         </div>
         <Link
           href={`/campanhas/nova?empresaId=${empresaId}`}
-          className="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm transition-all shadow-lg flex items-center gap-2"
+          className="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-medium text-sm transition-all shadow-sm flex items-center gap-2"
         >
           <span>+</span>
           <span>Criar Campanha</span>
@@ -66,19 +66,19 @@ export default function CampaignsList({ empresaId }: CampaignsListProps) {
       </div>
 
       {campanhas.length === 0 ? (
-        <div className="bg-gray-900 rounded-3xl border border-gray-800 p-12 text-center space-y-4">
-          <div className="w-16 h-16 bg-gray-800 text-gray-400 rounded-2xl flex items-center justify-center text-3xl mx-auto">
+        <div className="bg-white rounded-3xl border border-slate-200/80 p-12 text-center space-y-4 shadow-sm">
+          <div className="w-16 h-16 bg-indigo-50 text-indigo-600 border border-indigo-100 rounded-2xl flex items-center justify-center text-3xl mx-auto">
             📢
           </div>
           <div>
-            <h3 className="text-lg font-bold text-white mb-1">Nenhuma campanha criada ainda</h3>
-            <p className="text-gray-400 text-sm max-w-md mx-auto">
+            <h3 className="text-lg font-bold text-slate-900 mb-1">Nenhuma campanha criada ainda</h3>
+            <p className="text-slate-500 text-sm max-w-md mx-auto">
               Utilize o assistente com IA para criar sua primeira campanha de vendas no delivery em poucos minutos.
             </p>
           </div>
           <Link
             href={`/campanhas/nova?empresaId=${empresaId}`}
-            className="inline-block px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm transition-all shadow-md"
+            className="inline-block px-6 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-medium text-sm transition-all shadow-sm"
           >
             + Criar Minha Primeira Campanha
           </Link>
@@ -88,31 +88,31 @@ export default function CampaignsList({ empresaId }: CampaignsListProps) {
           {campanhas.map(campanha => (
             <div
               key={campanha.id}
-              className="bg-gray-900 rounded-2xl border border-gray-800 p-6 hover:border-gray-700 transition-all flex flex-col md:flex-row md:items-center justify-between gap-4"
+              className="bg-white rounded-2xl border border-slate-200/80 p-6 hover:border-slate-300 hover:shadow-md transition-all flex flex-col md:flex-row md:items-center justify-between gap-4 shadow-sm"
             >
               <div className="space-y-1.5">
                 <div className="flex items-center gap-2">
                   <span
                     className={`w-2.5 h-2.5 rounded-full ${
-                      campanha.status === 'ACTIVE' ? 'bg-emerald-400 animate-pulse' : 'bg-amber-400'
+                      campanha.status === 'ACTIVE' ? 'bg-emerald-500' : 'bg-amber-400'
                     }`}
                   />
-                  <h3 className="font-bold text-white text-base">{campanha.nome}</h3>
-                  <span className="text-[11px] px-2 py-0.5 rounded-full bg-blue-500/20 text-blue-400 font-semibold border border-blue-500/30">
+                  <h3 className="font-semibold text-slate-900 text-base">{campanha.nome}</h3>
+                  <span className="text-[11px] px-2.5 py-0.5 rounded-full bg-indigo-50 text-indigo-700 font-semibold border border-indigo-100">
                     {campanha.objetivo === 'OUTCOME_SALES' ? 'Vendas no Delivery' : campanha.objetivo}
                   </span>
                 </div>
-                <div className="flex flex-wrap items-center gap-4 text-xs text-gray-400">
+                <div className="flex flex-wrap items-center gap-4 text-xs text-slate-500">
                   <span>
                     Investimento:{' '}
-                    <strong className="text-white">
+                    <strong className="text-slate-800">
                       R$ {campanha.orcamentoDiario ? campanha.orcamentoDiario.toFixed(2) : '0.00'}/dia
                     </strong>
                   </span>
                   <span>•</span>
                   <span>
                     Estrutura:{' '}
-                    <strong className="text-white">
+                    <strong className="text-slate-800">
                       {campanha.conjuntosCount} conjunto(s), {campanha.anunciosCount} anúncio(s)
                     </strong>
                   </span>
@@ -127,7 +127,7 @@ export default function CampaignsList({ empresaId }: CampaignsListProps) {
               <div className="flex items-center gap-3">
                 <Link
                   href={`/dashboard?empresaId=${empresaId}`}
-                  className="px-4 py-2 rounded-xl bg-gray-800 hover:bg-gray-700 text-gray-300 font-medium text-xs transition-all"
+                  className="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200/80 text-slate-700 font-medium text-xs transition-all border border-slate-200/60"
                 >
                   Ver Métricas
                 </Link>

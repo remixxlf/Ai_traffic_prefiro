@@ -1,4 +1,4 @@
-﻿import { describe, it, expect, beforeAll, afterAll } from 'vitest';
+import { describe, it, expect, beforeAll, afterAll } from 'vitest';
 import { db } from '../src/lib/db';
 import { aiAssistantService } from '../src/lib/services/ai-assistant-service';
 import { campaignWizardService } from '../src/lib/services/campaign-wizard-service';
@@ -163,7 +163,7 @@ describe('Task 20: Chat IA com Comandos em Linguagem Natural, Alertas, Relatóri
     expect(interpretacao).toBeDefined();
     expect(interpretacao.tipo).toBe('CRIAR_CAMPANHA');
     expect(interpretacao.orcamentoDiario).toBe(100.0); // R$ 3000 / 30 dias = R$ 100/dia
-    expect(interpretacao.produtoFoco.toLowerCase()).toContain('hambúrguer');
+    expect(interpretacao.produtoFoco?.toLowerCase()).toContain('hambúrguer');
     expect(interpretacao.estrategia).toBeDefined();
     expect(interpretacao.publico).toBeDefined();
   });

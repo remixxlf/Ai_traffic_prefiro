@@ -127,11 +127,11 @@ export default function AudiencesList({ empresaId }: AudiencesListProps) {
 
   if (loading) {
     return (
-      <div className="bg-gray-900 rounded-2xl border border-gray-800 p-8 animate-pulse">
-        <div className="h-6 bg-gray-800 rounded w-48 mb-6" />
+      <div className="bg-white rounded-2xl border border-slate-200/80 p-8 animate-pulse shadow-sm">
+        <div className="h-6 bg-slate-200 rounded w-48 mb-6" />
         <div className="space-y-4">
           {[1, 2, 3].map(i => (
-            <div key={i} className="h-16 bg-gray-800 rounded-xl" />
+            <div key={i} className="h-16 bg-slate-100 rounded-xl" />
           ))}
         </div>
       </div>
@@ -144,14 +144,14 @@ export default function AudiencesList({ empresaId }: AudiencesListProps) {
     <div className="space-y-6">
       {/* Sugestão Inteligente de Lookalike (PDF Seção 26) */}
       {lookalikeEligibility?.elegivel && !hasLookalike && (
-        <div className="bg-gradient-to-r from-blue-950/60 to-indigo-950/60 border border-blue-500/40 rounded-2xl p-6 shadow-lg">
+        <div className="bg-indigo-50 border border-indigo-200 rounded-2xl p-6 shadow-sm">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div>
               <div className="flex items-center gap-2">
                 <span className="text-xl">✨</span>
-                <h3 className="text-base font-bold text-white">Recomendação da IA: Público Semelhante</h3>
+                <h3 className="text-base font-bold text-slate-900">Recomendação da IA: Público Semelhante</h3>
               </div>
-              <p className="text-blue-200 text-sm mt-1.5">
+              <p className="text-indigo-900/80 text-sm mt-1.5 font-medium">
                 {lookalikeEligibility.mensagem}
               </p>
             </div>
@@ -159,7 +159,7 @@ export default function AudiencesList({ empresaId }: AudiencesListProps) {
             <button
               onClick={handleCreateLookalike}
               disabled={actionLoading}
-              className="px-5 py-2.5 rounded-lg bg-blue-500 text-white text-sm font-semibold hover:bg-blue-400 transition-all shadow-md disabled:opacity-50 flex items-center gap-2 whitespace-nowrap"
+              className="px-5 py-2.5 rounded-xl bg-indigo-600 text-white text-sm font-semibold hover:bg-indigo-700 transition-all shadow-sm disabled:opacity-50 flex items-center gap-2 whitespace-nowrap"
             >
               Criar público semelhante
             </button>
@@ -168,17 +168,17 @@ export default function AudiencesList({ empresaId }: AudiencesListProps) {
       )}
 
       {/* Header & Ações Principais */}
-      <div className="bg-gray-900 rounded-2xl border border-gray-800 p-6">
+      <div className="bg-white rounded-2xl border border-slate-200/80 p-6 shadow-sm">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div>
             <div className="flex items-center gap-2">
               <span className="text-xl">👥</span>
-              <h2 className="text-xl font-bold text-white">Biblioteca de Públicos</h2>
-              <span className="px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-500/20 text-blue-400 border border-blue-500/30">
+              <h2 className="text-xl font-bold text-slate-900">Biblioteca de Públicos</h2>
+              <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
                 🔒 LGPD & Hashing SHA-256
               </span>
             </div>
-            <p className="text-gray-400 text-sm mt-1">
+            <p className="text-slate-500 text-sm mt-1">
               Públicos inteligentes gerados a partir do histórico real de clientes e raio do delivery.
             </p>
           </div>
@@ -187,14 +187,14 @@ export default function AudiencesList({ empresaId }: AudiencesListProps) {
             <button
               onClick={handleCreateGeo}
               disabled={actionLoading}
-              className="px-4 py-2.5 rounded-lg bg-gray-800 text-gray-200 text-sm font-medium hover:bg-gray-700 transition-all disabled:opacity-50"
+              className="px-4 py-2.5 rounded-xl bg-white hover:bg-slate-50 text-slate-700 text-sm font-semibold border border-slate-200 shadow-sm transition-all disabled:opacity-50 hover:border-slate-300"
             >
               📍 Criar Público Local
             </button>
             <button
               onClick={handleSyncClientes}
               disabled={actionLoading}
-              className="px-4 py-2.5 rounded-lg bg-blue-600 text-white text-sm font-medium hover:bg-blue-500 transition-all disabled:opacity-50"
+              className="px-4 py-2.5 rounded-xl bg-indigo-600 text-white text-sm font-semibold hover:bg-indigo-700 transition-all shadow-sm disabled:opacity-50"
             >
               🔄 Sincronizar Clientes
             </button>
@@ -202,32 +202,32 @@ export default function AudiencesList({ empresaId }: AudiencesListProps) {
         </div>
 
         {feedback && (
-          <div className="mt-4 p-3 rounded-lg bg-gray-800 border border-gray-700 text-sm text-gray-200">
+          <div className="mt-4 p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs font-medium text-slate-700">
             {feedback}
           </div>
         )}
       </div>
 
       {/* Lista de Públicos na Biblioteca (PDF Seção 23) */}
-      <div className="bg-gray-900 rounded-2xl border border-gray-800 overflow-hidden">
-        <div className="p-5 border-b border-gray-800 flex items-center justify-between">
-          <h3 className="font-semibold text-white text-base">Públicos Disponíveis para Anúncios</h3>
-          <span className="text-gray-400 text-xs">{publicos.length} públicos configurados</span>
+      <div className="bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-sm">
+        <div className="p-5 border-b border-slate-100 flex items-center justify-between">
+          <h3 className="font-semibold text-slate-900 text-base">Públicos Disponíveis para Anúncios</h3>
+          <span className="text-slate-500 text-xs font-medium">{publicos.length} públicos configurados</span>
         </div>
 
-        <div className="divide-y divide-gray-800">
+        <div className="divide-y divide-slate-100">
           {publicos.length > 0 ? (
             publicos.map(p => (
-              <div key={p.id} className="p-5 flex items-center justify-between hover:bg-gray-800/40 transition-colors">
+              <div key={p.id} className="p-5 flex items-center justify-between hover:bg-slate-50/60 transition-colors">
                 <div>
                   <div className="flex items-center gap-2.5">
-                    <h4 className="text-white font-medium text-base">{p.nome}</h4>
-                    <span className={`px-2 py-0.5 rounded text-[11px] font-medium border ${
+                    <h4 className="text-slate-900 font-semibold text-base">{p.nome}</h4>
+                    <span className={`px-2.5 py-0.5 rounded-full text-[11px] font-semibold border ${
                       p.tipo === 'LOOKALIKE'
-                        ? 'bg-purple-500/20 text-purple-300 border-purple-500/30'
+                        ? 'bg-purple-50 text-purple-700 border-purple-200'
                         : p.tipo === 'GEOGRAFICO'
-                        ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30'
-                        : 'bg-blue-500/20 text-blue-300 border-blue-500/30'
+                        ? 'bg-emerald-50 text-emerald-700 border-emerald-200'
+                        : 'bg-indigo-50 text-indigo-700 border-indigo-200'
                     }`}>
                       {p.tipo === 'LOOKALIKE'
                         ? 'Semelhante (Lookalike)'
@@ -236,8 +236,8 @@ export default function AudiencesList({ empresaId }: AudiencesListProps) {
                         : 'Público de Clientes'}
                     </span>
                   </div>
-                  <p className="text-gray-400 text-xs mt-1">{p.descricao || 'Público otimizado para campanhas'}</p>
-                  <div className="flex items-center gap-3 mt-2 text-xs text-gray-500">
+                  <p className="text-slate-500 text-xs mt-1">{p.descricao || 'Público otimizado para campanhas'}</p>
+                  <div className="flex items-center gap-3 mt-2 text-xs text-slate-400 font-medium">
                     <span>Origem: {p.origem || 'Meta Ads'}</span>
                     <span>•</span>
                     <span>Alcance Estimado: ~{p.tamanho_estimado?.toLocaleString('pt-BR') || 0} pessoas</span>
@@ -245,14 +245,14 @@ export default function AudiencesList({ empresaId }: AudiencesListProps) {
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <span className="text-xs px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                  <span className="text-xs px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold">
                     🟢 Pronto para Anúncios
                   </span>
                 </div>
               </div>
             ))
           ) : (
-            <div className="p-8 text-center text-gray-400 text-sm">
+            <div className="p-8 text-center text-slate-500 text-sm font-medium">
               Nenhum público configurado. Use as ações acima para gerar públicos automaticamente.
             </div>
           )}

@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import { useState, useEffect } from 'react';
 
@@ -49,8 +49,8 @@ export default function AlertsCenter({ empresaId }: AlertsCenterProps) {
 
   if (loading) {
     return (
-      <div className="bg-gray-900 rounded-2xl border border-gray-800 p-8 text-center text-gray-400">
-        <span className="inline-block w-5 h-5 border-2 border-blue-500 border-t-transparent rounded-full animate-spin mr-2" />
+      <div className="bg-white rounded-2xl border border-slate-200/80 p-8 text-center text-slate-500 shadow-sm">
+        <span className="inline-block w-5 h-5 border-2 border-indigo-600 border-t-transparent rounded-full animate-spin mr-2" />
         Carregando central de notificações e alertas...
       </div>
     );
@@ -62,22 +62,22 @@ export default function AlertsCenter({ empresaId }: AlertsCenterProps) {
         <div>
           <div className="flex items-center gap-2">
             <span className="text-2xl">🔔</span>
-            <h2 className="text-xl font-bold text-white">Central de Alertas & Incidentes</h2>
+            <h2 className="text-xl font-bold text-slate-900">Central de Alertas & Incidentes</h2>
           </div>
-          <p className="text-gray-400 text-xs mt-1">
+          <p className="text-slate-500 text-xs mt-1">
             Monitoramento de status da conta, faturamento, Pixel, CAPI e oscilações bruscas de CPA e ROAS.
           </p>
         </div>
       </div>
 
       {alertas.length === 0 ? (
-        <div className="bg-gray-900 rounded-3xl border border-gray-800 p-12 text-center space-y-3">
-          <div className="w-16 h-16 bg-gray-800 text-emerald-400 rounded-2xl flex items-center justify-center text-3xl mx-auto border border-emerald-500/20">
+        <div className="bg-white rounded-3xl border border-slate-200/80 p-12 text-center space-y-3 shadow-sm">
+          <div className="w-14 h-14 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center text-2xl font-bold mx-auto border border-emerald-100">
             ✓
           </div>
           <div>
-            <h3 className="text-lg font-bold text-white mb-1">Nenhum incidente ativo</h3>
-            <p className="text-gray-400 text-xs max-w-md mx-auto">
+            <h3 className="text-lg font-bold text-slate-900 mb-1">Nenhum incidente ativo</h3>
+            <p className="text-slate-500 text-xs max-w-md mx-auto">
               Sua conta de anúncios, catálogo e integrações de rastreamento estão operando dentro da normalidade.
             </p>
           </div>
@@ -87,31 +87,31 @@ export default function AlertsCenter({ empresaId }: AlertsCenterProps) {
           {alertas.map(a => (
             <div
               key={a.id}
-              className={`p-5 rounded-2xl border transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-4 ${
+              className={`p-5 rounded-2xl border transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-sm ${
                 a.lido
-                  ? 'bg-gray-900/40 border-gray-800/60 opacity-60'
+                  ? 'bg-slate-50/70 border-slate-200/60 opacity-60'
                   : a.nivel === 'CRITICO'
-                  ? 'bg-red-950/20 border-red-500/30'
-                  : 'bg-gray-900 border-gray-800'
+                  ? 'bg-rose-50/40 border-rose-200'
+                  : 'bg-white border-slate-200/80'
               }`}
             >
               <div className="space-y-1">
                 <div className="flex items-center gap-2">
                   <span
-                    className={`text-[10px] font-bold px-2 py-0.5 rounded-full uppercase border ${
+                    className={`text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase border ${
                       a.nivel === 'CRITICO'
-                        ? 'bg-red-500/20 text-red-400 border-red-500/30'
+                        ? 'bg-rose-100 text-rose-800 border-rose-200'
                         : a.nivel === 'ATENCAO'
-                        ? 'bg-amber-500/20 text-amber-400 border-amber-500/30'
-                        : 'bg-blue-500/20 text-blue-400 border-blue-500/30'
+                        ? 'bg-amber-100 text-amber-800 border-amber-200'
+                        : 'bg-indigo-50 text-indigo-700 border-indigo-200'
                     }`}
                   >
                     {a.nivel}
                   </span>
-                  <h4 className="font-bold text-white text-sm">{a.titulo}</h4>
+                  <h4 className="font-bold text-slate-900 text-sm">{a.titulo}</h4>
                 </div>
-                <p className="text-xs text-gray-300 leading-relaxed">{a.mensagem}</p>
-                <span className="text-[11px] text-gray-500 block">
+                <p className="text-xs text-slate-600 leading-relaxed font-normal">{a.mensagem}</p>
+                <span className="text-[11px] text-slate-400 font-medium block">
                   {new Date(a.created_at).toLocaleString('pt-BR')}
                 </span>
               </div>
@@ -119,7 +119,7 @@ export default function AlertsCenter({ empresaId }: AlertsCenterProps) {
               {!a.lido && (
                 <button
                   onClick={() => handleMarkAsRead(a.id)}
-                  className="px-3.5 py-1.5 bg-gray-800 hover:bg-gray-700 text-xs font-semibold text-gray-300 rounded-xl transition-all self-end sm:self-center"
+                  className="px-3.5 py-1.5 bg-white hover:bg-slate-50 text-xs font-semibold text-slate-700 border border-slate-200 shadow-sm rounded-xl transition-all self-end sm:self-center hover:border-slate-300"
                 >
                   Marcar como Lido
                 </button>

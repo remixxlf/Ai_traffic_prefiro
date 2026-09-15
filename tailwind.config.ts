@@ -11,33 +11,28 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
-        studio: {
-          50: "#f6f8fb",
-          100: "#ebf0f7",
-          200: "#d3def0",
-          300: "#adc3e4",
-          400: "#80a2d4",
-          500: "#5d84c4",
-          600: "#476ab1",
-          700: "#3a5491",
-          800: "#334777",
-          900: "#2d3c63",
-          950: "#131826",
-        },
-        gold: {
-          400: "#fbbf24",
-          500: "#f59e0b",
-          600: "#d97706",
+        primary: {
+          50: "#eef2ff",
+          100: "#e0e7ff",
+          200: "#c7d2fe",
+          300: "#a5b4fc",
+          400: "#818cf8",
+          500: "#6366f1",
+          600: "#4f46e5", // Canny Hero Indigo
+          700: "#4338ca",
+          800: "#3730a3",
+          900: "#312e81",
+          950: "#1e1b4b",
         },
       },
-      keyframes: {
-        shimmer: {
-          '0%': { transform: 'translateX(-100%)' },
-          '100%': { transform: 'translateX(100%)' },
-        },
+      boxShadow: {
+        'subtle': '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+        'card': '0 1px 3px 0 rgba(0, 0, 0, 0.06), 0 1px 2px -1px rgba(0, 0, 0, 0.06)',
+        'card-hover': '0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.06)',
+        'dropdown': '0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04)',
       },
-      animation: {
-        shimmer: 'shimmer 2s infinite',
+      fontFamily: {
+        sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
       },
     },
   },

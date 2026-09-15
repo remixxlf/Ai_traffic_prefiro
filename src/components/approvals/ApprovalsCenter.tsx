@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
@@ -64,8 +64,8 @@ export default function ApprovalsCenter({ empresaId }: ApprovalsCenterProps) {
 
   if (loading) {
     return (
-      <div className="bg-gray-900 rounded-2xl border border-gray-800 p-8 text-center text-gray-400">
-        <span className="inline-block w-5 h-5 border-2 border-blue-500 border-t-transparent rounded-full animate-spin mr-2" />
+      <div className="bg-white rounded-2xl border border-slate-200/80 p-8 text-center text-slate-500 shadow-sm">
+        <span className="inline-block w-5 h-5 border-2 border-indigo-600 border-t-transparent rounded-full animate-spin mr-2" />
         Carregando Centro de Aprovações...
       </div>
     );
@@ -77,35 +77,35 @@ export default function ApprovalsCenter({ empresaId }: ApprovalsCenterProps) {
         <div>
           <div className="flex items-center gap-2">
             <span className="text-2xl">🤝</span>
-            <h2 className="text-xl font-bold text-white">Centro de Aprovações (Modo Assistido)</h2>
+            <h2 className="text-xl font-bold text-slate-900">Centro de Aprovações (Modo Assistido)</h2>
           </div>
-          <p className="text-gray-400 text-xs mt-1">
+          <p className="text-slate-500 text-xs mt-1">
             Aqui você valida ou descarta as otimizações sugeridas pela IA com 1 clique antes que entrem em vigor na Meta.
           </p>
         </div>
 
         <Link
           href={`/minha-ia?empresaId=${empresaId}`}
-          className="text-xs text-blue-400 hover:text-blue-300 font-semibold px-3.5 py-2 rounded-xl bg-gray-900 border border-gray-800 transition-all flex items-center gap-1.5"
+          className="text-xs text-slate-700 hover:text-indigo-600 font-semibold px-3.5 py-2 rounded-xl bg-white border border-slate-200 hover:border-slate-300 shadow-sm transition-all flex items-center gap-1.5"
         >
           <span>← Ver Diagnósticos da IA</span>
         </Link>
       </div>
 
       {feedback && (
-        <div className="p-3.5 bg-gray-950 border border-gray-800 rounded-xl text-xs text-gray-300">
+        <div className="p-3.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium text-slate-700">
           {feedback}
         </div>
       )}
 
       {aprovacoes.length === 0 ? (
-        <div className="bg-gray-900 rounded-3xl border border-gray-800 p-12 text-center space-y-4">
-          <div className="w-16 h-16 bg-gray-800 text-gray-400 rounded-2xl flex items-center justify-center text-3xl mx-auto">
+        <div className="bg-white rounded-3xl border border-slate-200/80 p-12 text-center space-y-4 shadow-sm">
+          <div className="w-14 h-14 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center text-2xl font-bold mx-auto border border-emerald-100">
             ✓
           </div>
           <div>
-            <h3 className="text-lg font-bold text-white mb-1">Tudo em dia!</h3>
-            <p className="text-gray-400 text-xs max-w-md mx-auto">
+            <h3 className="text-lg font-bold text-slate-900 mb-1">Tudo em dia!</h3>
+            <p className="text-slate-500 text-xs max-w-md mx-auto">
               Não há nenhuma solicitação pendente no momento. Quando a IA identificar uma oportunidade de escala ou necessidade de ajuste, ela aparecerá aqui.
             </p>
           </div>
@@ -115,42 +115,42 @@ export default function ApprovalsCenter({ empresaId }: ApprovalsCenterProps) {
           {aprovacoes.map(item => (
             <div
               key={item.id}
-              className="bg-gray-900 rounded-2xl border border-gray-800 p-6 space-y-4 hover:border-gray-700 transition-all"
+              className="bg-white rounded-2xl border border-slate-200/80 p-6 space-y-4 shadow-sm hover:shadow-md transition-all"
             >
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-gray-800">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-100">
                 <div className="flex items-center gap-2">
-                  <span className="text-xs font-bold px-2.5 py-1 rounded-full bg-blue-500/20 text-blue-400 border border-blue-500/30">
+                  <span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-200">
                     {item.acaoTipo.replace('_', ' ')}
                   </span>
-                  <h3 className="font-bold text-white text-base">{item.titulo}</h3>
+                  <h3 className="font-bold text-slate-900 text-base">{item.titulo}</h3>
                 </div>
-                <span className="text-[11px] text-gray-500">
+                <span className="text-[11px] text-slate-400 font-medium">
                   {new Date(item.createdAt).toLocaleString('pt-BR')}
                 </span>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-1">
-                  <span className="text-xs text-gray-400 font-medium block">Diagnóstico & Justificativa:</span>
-                  <p className="text-xs text-gray-300 leading-relaxed bg-gray-950 p-3 rounded-xl border border-gray-800">
+                  <span className="text-xs text-slate-600 font-semibold block">Diagnóstico & Justificativa:</span>
+                  <p className="text-xs text-slate-700 leading-relaxed bg-slate-50 p-3.5 rounded-xl border border-slate-100">
                     {item.descricao}
                   </p>
                 </div>
 
                 {item.payload && item.payload.valorProposto && (
                   <div className="space-y-1">
-                    <span className="text-xs text-gray-400 font-medium block">Alteração Proposta:</span>
-                    <div className="bg-gray-950 p-3 rounded-xl border border-gray-800 flex items-center justify-around text-center">
+                    <span className="text-xs text-slate-600 font-semibold block">Alteração Proposta:</span>
+                    <div className="bg-slate-50 p-3.5 rounded-xl border border-slate-100 flex items-center justify-around text-center">
                       <div>
-                        <span className="text-[10px] text-gray-500 uppercase block">Atual</span>
-                        <span className="text-sm font-bold text-gray-400">
+                        <span className="text-[10px] text-slate-400 uppercase font-semibold block">Atual</span>
+                        <span className="text-sm font-bold text-slate-600">
                           R$ {Number(item.payload.valorAnterior || 0).toFixed(2)}/dia
                         </span>
                       </div>
-                      <span className="text-gray-600 text-lg font-bold">→</span>
+                      <span className="text-slate-300 text-lg font-bold">→</span>
                       <div>
-                        <span className="text-[10px] text-emerald-400 uppercase block font-bold">Proposto</span>
-                        <span className="text-sm font-bold text-emerald-400">
+                        <span className="text-[10px] text-emerald-700 uppercase font-bold block">Proposto</span>
+                        <span className="text-sm font-bold text-emerald-600">
                           R$ {Number(item.payload.valorProposto).toFixed(2)}/dia
                         </span>
                       </div>
@@ -163,14 +163,14 @@ export default function ApprovalsCenter({ empresaId }: ApprovalsCenterProps) {
                 <button
                   onClick={() => handleDecidir(item.id, 'RECUSAR')}
                   disabled={processingId === item.id}
-                  className="px-4 py-2 bg-gray-800 hover:bg-gray-700 disabled:opacity-50 text-gray-300 font-semibold text-xs rounded-xl transition-all"
+                  className="px-4 py-2 bg-white hover:bg-slate-50 border border-slate-200 disabled:opacity-50 text-slate-600 font-semibold text-xs rounded-xl transition-all shadow-sm hover:border-slate-300"
                 >
                   ✕ Recusar
                 </button>
                 <button
                   onClick={() => handleDecidir(item.id, 'APROVAR')}
                   disabled={processingId === item.id}
-                  className="px-5 py-2 bg-emerald-600 hover:bg-emerald-500 disabled:opacity-50 text-white font-bold text-xs rounded-xl transition-all shadow-md flex items-center gap-1.5"
+                  className="px-5 py-2 bg-emerald-600 hover:bg-emerald-700 disabled:opacity-50 text-white font-bold text-xs rounded-xl transition-all shadow-sm flex items-center gap-1.5"
                 >
                   {processingId === item.id ? (
                     'Processando...'

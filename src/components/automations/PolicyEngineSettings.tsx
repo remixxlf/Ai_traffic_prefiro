@@ -95,8 +95,8 @@ export default function PolicyEngineSettings({ empresaId }: PolicyEngineSettings
 
   if (loading) {
     return (
-      <div className="bg-gray-900 rounded-2xl border border-gray-800 p-8 text-center text-gray-400">
-        <span className="inline-block w-5 h-5 border-2 border-blue-500 border-t-transparent rounded-full animate-spin mr-2" />
+      <div className="bg-white rounded-2xl border border-slate-200/80 p-8 text-center text-slate-500 shadow-sm">
+        <span className="inline-block w-5 h-5 border-2 border-indigo-600 border-t-transparent rounded-full animate-spin mr-2" />
         Carregando configurações do Policy Engine...
       </div>
     );
@@ -105,12 +105,12 @@ export default function PolicyEngineSettings({ empresaId }: PolicyEngineSettings
   return (
     <div className="space-y-6">
       {/* Seletor de Modo de Operação (PDF Seção 41) */}
-      <div className="bg-gray-900 rounded-3xl border border-gray-800 p-6 md:p-8 space-y-6">
+      <div className="bg-white rounded-3xl border border-slate-200/80 p-6 md:p-8 space-y-6 shadow-sm">
         <div>
-          <h2 className="text-xl md:text-2xl font-bold text-white">
+          <h2 className="text-xl md:text-2xl font-bold text-slate-900">
             Como a IA deve operar no seu negócio?
           </h2>
-          <p className="text-gray-400 text-sm mt-1">
+          <p className="text-slate-500 text-sm mt-1">
             Escolha o nível de controle que você deseja ter sobre as ações e otimizações executadas na sua conta.
           </p>
         </div>
@@ -121,19 +121,19 @@ export default function PolicyEngineSettings({ empresaId }: PolicyEngineSettings
             onClick={() => setModo('MANUAL')}
             className={`p-5 rounded-2xl border cursor-pointer transition-all flex flex-col justify-between ${
               modo === 'MANUAL'
-                ? 'bg-blue-600/10 border-blue-500 ring-2 ring-blue-500/30 shadow-lg'
-                : 'bg-gray-950 border-gray-800 hover:border-gray-700'
+                ? 'bg-indigo-50/60 border-indigo-600 ring-2 ring-indigo-500/20 shadow-sm'
+                : 'bg-slate-50 border-slate-200 hover:border-slate-300 hover:bg-slate-100/50'
             }`}
           >
             <div>
               <div className="text-2xl mb-2">🛡️</div>
-              <h3 className="font-bold text-white text-base">Modo Manual</h3>
-              <p className="text-gray-400 text-xs mt-2 leading-relaxed">
+              <h3 className="font-bold text-slate-900 text-base">Modo Manual</h3>
+              <p className="text-slate-600 text-xs mt-2 leading-relaxed font-normal">
                 A IA analisa suas métricas e gera recomendações estratégicas. Nenhuma alteração é feita na Meta sem que você execute pessoalmente.
               </p>
             </div>
-            <div className="mt-4 pt-3 border-t border-gray-800/80">
-              <span className={`text-xs font-bold ${modo === 'MANUAL' ? 'text-blue-400' : 'text-gray-500'}`}>
+            <div className="mt-4 pt-3 border-t border-slate-200">
+              <span className={`text-xs font-bold ${modo === 'MANUAL' ? 'text-indigo-600' : 'text-slate-400'}`}>
                 {modo === 'MANUAL' ? '● Selecionado' : 'Selecionar'}
               </span>
             </div>
@@ -144,28 +144,28 @@ export default function PolicyEngineSettings({ empresaId }: PolicyEngineSettings
             onClick={() => setModo('ASSISTIDO')}
             className={`p-5 rounded-2xl border cursor-pointer transition-all flex flex-col justify-between ${
               modo === 'ASSISTIDO'
-                ? 'bg-emerald-600/10 border-emerald-500 ring-2 ring-emerald-500/30 shadow-lg'
-                : 'bg-gray-950 border-gray-800 hover:border-gray-700'
+                ? 'bg-emerald-50/60 border-emerald-600 ring-2 ring-emerald-500/20 shadow-sm'
+                : 'bg-slate-50 border-slate-200 hover:border-slate-300 hover:bg-slate-100/50'
             }`}
           >
             <div>
               <div className="flex items-center justify-between">
                 <div className="text-2xl mb-2">🤝</div>
-                <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+                <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-300">
                   RECOMENDADO
                 </span>
               </div>
-              <h3 className="font-bold text-white text-base">Modo Assistido</h3>
-              <p className="text-gray-400 text-xs mt-2 leading-relaxed">
+              <h3 className="font-bold text-slate-900 text-base">Modo Assistido</h3>
+              <p className="text-slate-600 text-xs mt-2 leading-relaxed font-normal">
                 A IA recomenda otimizações (ex: aumento de orçamento ou troca de criativo). Você aprova ou recusa com 1 clique no Centro de Aprovações.
               </p>
             </div>
-            <div className="mt-4 pt-3 border-t border-gray-800/80 flex items-center justify-between">
-              <span className={`text-xs font-bold ${modo === 'ASSISTIDO' ? 'text-emerald-400' : 'text-gray-500'}`}>
+            <div className="mt-4 pt-3 border-t border-slate-200 flex items-center justify-between">
+              <span className={`text-xs font-bold ${modo === 'ASSISTIDO' ? 'text-emerald-700' : 'text-slate-400'}`}>
                 {modo === 'ASSISTIDO' ? '● Selecionado' : 'Selecionar'}
               </span>
               {pendentesAprovacao > 0 && (
-                <span className="text-[11px] text-amber-400 font-semibold">
+                <span className="text-[11px] text-amber-600 font-bold">
                   {pendentesAprovacao} pendente(s)
                 </span>
               )}
@@ -177,19 +177,19 @@ export default function PolicyEngineSettings({ empresaId }: PolicyEngineSettings
             onClick={() => setModo('AUTOMATICO')}
             className={`p-5 rounded-2xl border cursor-pointer transition-all flex flex-col justify-between ${
               modo === 'AUTOMATICO'
-                ? 'bg-purple-600/10 border-purple-500 ring-2 ring-purple-500/30 shadow-lg'
-                : 'bg-gray-950 border-gray-800 hover:border-gray-700'
+                ? 'bg-purple-50/60 border-purple-600 ring-2 ring-purple-500/20 shadow-sm'
+                : 'bg-slate-50 border-slate-200 hover:border-slate-300 hover:bg-slate-100/50'
             }`}
           >
             <div>
               <div className="text-2xl mb-2">⚡</div>
-              <h3 className="font-bold text-white text-base">Modo Automático</h3>
-              <p className="text-gray-400 text-xs mt-2 leading-relaxed">
+              <h3 className="font-bold text-slate-900 text-base">Modo Automático</h3>
+              <p className="text-slate-600 text-xs mt-2 leading-relaxed font-normal">
                 A IA executa ajustes de orçamento e pausa anúncios saturados de forma autônoma, sempre respeitando os limites rígidos do Policy Engine.
               </p>
             </div>
-            <div className="mt-4 pt-3 border-t border-gray-800/80">
-              <span className={`text-xs font-bold ${modo === 'AUTOMATICO' ? 'text-purple-400' : 'text-gray-500'}`}>
+            <div className="mt-4 pt-3 border-t border-slate-200">
+              <span className={`text-xs font-bold ${modo === 'AUTOMATICO' ? 'text-purple-700' : 'text-slate-400'}`}>
                 {modo === 'AUTOMATICO' ? '● Selecionado' : 'Selecionar'}
               </span>
             </div>
@@ -198,64 +198,64 @@ export default function PolicyEngineSettings({ empresaId }: PolicyEngineSettings
       </div>
 
       {/* Limites de Segurança & Guardrails do Policy Engine (PDF Seções 43, 76, 77) */}
-      <div className="bg-gray-900 rounded-3xl border border-gray-800 p-6 md:p-8 space-y-6">
+      <div className="bg-white rounded-3xl border border-slate-200/80 p-6 md:p-8 space-y-6 shadow-sm">
         <div>
-          <h2 className="text-xl font-bold text-white">
+          <h2 className="text-xl font-bold text-slate-900">
             Travas de Proteção Orçamentária
           </h2>
-          <p className="text-gray-400 text-sm mt-1">
+          <p className="text-slate-500 text-sm mt-1">
             Nenhuma ação da IA é aplicada na Meta sem antes passar pelo crivo do Policy Engine.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="bg-gray-950 p-5 rounded-2xl border border-gray-800 space-y-3">
-            <label className="text-xs text-gray-400 font-semibold block">
+          <div className="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-3">
+            <label className="text-xs text-slate-700 font-semibold block">
               Teto Máximo Diário da Empresa
             </label>
             <div className="relative">
-              <span className="absolute left-4 top-3 text-sm text-gray-500 font-bold">R$</span>
+              <span className="absolute left-4 top-3 text-sm text-slate-400 font-bold">R$</span>
               <input
                 type="number"
                 min="50"
                 step="50"
                 value={orcamentoMax}
                 onChange={e => setOrcamentoMax(Number(e.target.value))}
-                className="w-full bg-gray-900 text-white font-bold text-base pl-12 pr-4 py-3 rounded-xl border border-gray-800 focus:border-blue-500 focus:outline-none"
+                className="w-full bg-white text-slate-900 font-bold text-base pl-12 pr-4 py-3 rounded-xl border border-slate-200 focus:border-indigo-500 focus:outline-none shadow-inner"
               />
             </div>
-            <p className="text-[11px] text-gray-500">
+            <p className="text-[11px] text-slate-500 font-medium">
               Nenhuma ação da IA poderá elevar a soma dos seus orçamentos acima deste valor diário.
             </p>
           </div>
 
           <div className="space-y-3">
-            <div className="bg-gray-950 p-4 rounded-xl border border-gray-800 flex items-center justify-between">
+            <div className="bg-slate-50 p-4 rounded-xl border border-slate-200/80 flex items-center justify-between">
               <div>
-                <span className="text-white text-xs font-bold block">Aumento Máximo por Ação</span>
-                <span className="text-[11px] text-gray-500">Evita saltos orçamentários abruptos</span>
+                <span className="text-slate-900 text-xs font-bold block">Aumento Máximo por Ação</span>
+                <span className="text-[11px] text-slate-500">Evita saltos orçamentários abruptos</span>
               </div>
-              <span className="text-xs font-bold px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+              <span className="text-xs font-semibold px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
                 🔒 Teto de 20%
               </span>
             </div>
 
-            <div className="bg-gray-950 p-4 rounded-xl border border-gray-800 flex items-center justify-between">
+            <div className="bg-slate-50 p-4 rounded-xl border border-slate-200/80 flex items-center justify-between">
               <div>
-                <span className="text-white text-xs font-bold block">Aumento Acumulado em 24h</span>
-                <span className="text-[11px] text-gray-500">Janela de proteção contínua</span>
+                <span className="text-slate-900 text-xs font-bold block">Aumento Acumulado em 24h</span>
+                <span className="text-[11px] text-slate-500">Janela de proteção contínua</span>
               </div>
-              <span className="text-xs font-bold px-3 py-1 rounded-full bg-blue-500/20 text-blue-400 border border-blue-500/30">
+              <span className="text-xs font-semibold px-3 py-1 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-200">
                 🔒 Teto de 30%
               </span>
             </div>
 
-            <div className="bg-gray-950 p-4 rounded-xl border border-gray-800 flex items-center justify-between">
+            <div className="bg-slate-50 p-4 rounded-xl border border-slate-200/80 flex items-center justify-between">
               <div>
-                <span className="text-white text-xs font-bold block">Piso Mínimo Diário</span>
-                <span className="text-[11px] text-gray-500">Garante aprendizado do Pixel</span>
+                <span className="text-slate-900 text-xs font-bold block">Piso Mínimo Diário</span>
+                <span className="text-[11px] text-slate-500">Garante aprendizado do Pixel</span>
               </div>
-              <span className="text-xs font-bold px-3 py-1 rounded-full bg-purple-500/20 text-purple-400 border border-purple-500/30">
+              <span className="text-xs font-semibold px-3 py-1 rounded-full bg-purple-50 text-purple-700 border border-purple-200">
                 🔒 R$ 10,00/dia
               </span>
             </div>
@@ -263,7 +263,7 @@ export default function PolicyEngineSettings({ empresaId }: PolicyEngineSettings
         </div>
 
         {feedback && (
-          <div className="p-3.5 bg-gray-950 border border-gray-800 rounded-xl text-xs text-gray-300">
+          <div className="p-3.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium text-slate-700">
             {feedback}
           </div>
         )}
@@ -272,7 +272,7 @@ export default function PolicyEngineSettings({ empresaId }: PolicyEngineSettings
           <button
             onClick={handleSave}
             disabled={saving}
-            className="px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 disabled:opacity-50 text-white font-bold text-sm transition-all shadow-lg flex items-center gap-2"
+            className="px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 text-white font-semibold text-sm transition-all shadow-sm flex items-center gap-2"
           >
             {saving ? 'Salvando...' : '💾 Salvar Parâmetros'}
           </button>
@@ -280,13 +280,13 @@ export default function PolicyEngineSettings({ empresaId }: PolicyEngineSettings
       </div>
 
       {/* Regras Determinísticas de Automação (PDF Seção 44) */}
-      <div className="bg-gray-900 rounded-3xl border border-gray-800 p-6 md:p-8 space-y-4">
+      <div className="bg-white rounded-3xl border border-slate-200/80 p-6 md:p-8 space-y-4 shadow-sm">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
           <div>
-            <h3 className="text-lg font-bold text-white">
+            <h3 className="text-lg font-bold text-slate-900">
               Automações Determinísticas Ativas
             </h3>
-            <p className="text-gray-400 text-xs mt-0.5">
+            <p className="text-slate-500 text-xs mt-0.5">
               Gatilhos automáticos executados periodicamente para evitar desperdício de verba.
             </p>
           </div>
@@ -294,23 +294,23 @@ export default function PolicyEngineSettings({ empresaId }: PolicyEngineSettings
           <button
             onClick={handleAvaliarRegras}
             disabled={evaluating}
-            className="px-4 py-2 bg-gray-800 hover:bg-gray-700 disabled:opacity-50 text-white text-xs font-semibold rounded-xl border border-gray-700 transition-all flex items-center gap-1.5"
+            className="px-4 py-2 bg-white hover:bg-slate-50 disabled:opacity-50 text-slate-700 text-xs font-semibold rounded-xl border border-slate-200 transition-all flex items-center gap-1.5 shadow-sm hover:border-slate-300"
           >
             {evaluating ? 'Avaliando...' : '⚡ Avaliar Regras Agora'}
           </button>
         </div>
 
-        <div className="divide-y divide-gray-800 bg-gray-950 rounded-2xl border border-gray-800">
+        <div className="divide-y divide-slate-200 bg-slate-50 rounded-2xl border border-slate-200">
           <div className="p-4 flex items-center justify-between">
             <div className="space-y-1">
-              <span className="text-xs font-bold text-white block">
+              <span className="text-xs font-bold text-slate-900 block">
                 Regra Anti-Prejuízo de Pedido
               </span>
-              <p className="text-xs text-gray-400 font-mono">
-                Se: <strong className="text-amber-400">CPA &gt; R$ 30,00</strong> E <strong className="text-amber-400">Gasto &gt; R$ 150,00</strong> → <span className="text-red-400">Pausar Anúncio</span>
+              <p className="text-xs text-slate-600 font-mono">
+                Se: <strong className="text-amber-700">CPA &gt; R$ 30,00</strong> E <strong className="text-amber-700">Gasto &gt; R$ 150,00</strong> → <span className="text-rose-600 font-semibold">Pausar Anúncio</span>
               </p>
             </div>
-            <span className="text-[11px] px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-400 font-bold border border-emerald-500/30">
+            <span className="text-[11px] px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 font-bold border border-emerald-300">
               ATIVA
             </span>
           </div>
