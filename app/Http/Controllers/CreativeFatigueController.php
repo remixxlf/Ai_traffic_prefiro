@@ -17,11 +17,21 @@ class CreativeFatigueController extends Controller
     public function __construct(
         private CreativeFatigueService $fatigueService
     ) {}
-
     public function index(Request $request): Response
     {
         $user = $request->user() ?? User::first();
-        $empresa = $user ? $user->empresas()->first() : Empresa::first();
+        $empresaId = $request->query('empresaId');
+        $empresa = null;
+        if ($empresaId) {
+            $empresa = Empresa::find($empresaId);
+        }
+        if (!$empresa) {
+            $empresa = $user ? $user->empresas()->first() : Empresa::first();
+        }
+
+        if (!$empresa) {
+            return Inertia::render('Onboarding/Wizard');
+        }
 
         $criativos = Criativo::where('empresa_id', $empresa->id)
             ->with(['produto', 'anuncios.conjunto.campanha'])

@@ -20,7 +20,14 @@ class DashboardController extends Controller
     public function index(Request $request): Response
     {
         $user = $request->user() ?? User::first();
-        $empresa = $user ? $user->empresas()->first() : Empresa::first();
+        $empresaId = $request->query('empresaId');
+        $empresa = null;
+        if ($empresaId) {
+            $empresa = Empresa::find($empresaId);
+        }
+        if (!$empresa) {
+            $empresa = $user ? $user->empresas()->first() : Empresa::first();
+        }
 
         if (!$empresa) {
             return Inertia::render('Onboarding/Wizard');

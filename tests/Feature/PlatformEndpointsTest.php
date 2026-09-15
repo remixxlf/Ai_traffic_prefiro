@@ -47,27 +47,99 @@ class PlatformEndpointsTest extends TestCase
         ]);
     }
 
-    public function test_dashboard_route_returns_ok(): void
+    public function test_home_route_returns_ok(): void
     {
         $response = $this->actingAs($this->user)->get('/');
         $response->assertStatus(200);
     }
 
+    public function test_dashboard_route_returns_ok(): void
+    {
+        $response = $this->actingAs($this->user)->get('/dashboard');
+        $response->assertStatus(200);
+    }
+
+    public function test_integrations_route_returns_ok(): void
+    {
+        $response = $this->actingAs($this->user)->get('/integracoes');
+        $response->assertStatus(200);
+    }
+
+    public function test_catalog_route_returns_ok(): void
+    {
+        $response = $this->actingAs($this->user)->get('/catalogo');
+        $response->assertStatus(200);
+    }
+
     public function test_campaigns_route_returns_ok(): void
     {
-        $response = $this->actingAs($this->user)->get('/campaigns');
+        $response = $this->actingAs($this->user)->get('/campanhas');
         $response->assertStatus(200);
     }
 
-    public function test_creative_fatigue_route_returns_ok(): void
+    public function test_campaigns_create_route_returns_ok(): void
     {
-        $response = $this->actingAs($this->user)->get('/creative-fatigue');
+        $response = $this->actingAs($this->user)->get('/campanhas/nova');
         $response->assertStatus(200);
     }
 
-    public function test_automation_route_returns_ok(): void
+    public function test_copywriting_route_returns_ok(): void
     {
-        $response = $this->actingAs($this->user)->get('/automation');
+        $response = $this->actingAs($this->user)->get('/copywriting');
+        $response->assertStatus(200);
+    }
+
+    public function test_creatives_route_returns_ok(): void
+    {
+        $response = $this->actingAs($this->user)->get('/criativos');
+        $response->assertStatus(200);
+    }
+
+    public function test_audiences_route_returns_ok(): void
+    {
+        $response = $this->actingAs($this->user)->get('/publicos');
+        $response->assertStatus(200);
+    }
+
+    public function test_tracking_route_returns_ok(): void
+    {
+        $response = $this->actingAs($this->user)->get('/rastreamento');
+        $response->assertStatus(200);
+    }
+
+    public function test_automations_route_returns_ok(): void
+    {
+        $response = $this->actingAs($this->user)->get('/automacoes');
+        $response->assertStatus(200);
+    }
+
+    public function test_minha_ia_route_returns_ok(): void
+    {
+        $response = $this->actingAs($this->user)->get('/minha-ia');
+        $response->assertStatus(200);
+    }
+
+    public function test_approvals_route_returns_ok(): void
+    {
+        $response = $this->actingAs($this->user)->get('/aprovacoes');
+        $response->assertStatus(200);
+    }
+
+    public function test_chat_route_returns_ok(): void
+    {
+        $response = $this->actingAs($this->user)->get('/chat');
+        $response->assertStatus(200);
+    }
+
+    public function test_reports_route_returns_ok(): void
+    {
+        $response = $this->actingAs($this->user)->get('/relatorios');
+        $response->assertStatus(200);
+    }
+
+    public function test_alerts_route_returns_ok(): void
+    {
+        $response = $this->actingAs($this->user)->get('/alertas');
         $response->assertStatus(200);
     }
 
@@ -154,5 +226,65 @@ class PlatformEndpointsTest extends TestCase
         $response->assertStatus(200);
         $response->assertJsonPath('success', true);
         $response->assertJsonPath('result.roas_real', 4.5);
+    }
+
+    public function test_copywriting_api_generates_three_variations(): void
+    {
+        $response = $this->actingAs($this->user)->postJson('/api/copywriting/gerar', [
+            'empresaId' => $this->empresa->id,
+            'produtoNome' => 'Burger Artesanal Especial',
+            'preco' => '35,00',
+            'precoPromocional' => '28,90',
+        ]);
+
+        $response->assertStatus(200);
+        $response->assertJsonPath('success', true);
+        $response->assertJsonStructure([
+            'success',
+            'resultado' => [
+                'empresa',
+                'produto',
+                'variacoes' => [
+                    'focoProduto',
+                    'focoBeneficio',
+                    'focoUrgencia',
+                ]
+            ]
+        ]);
+    }
+
+    public function test_chat_api_handles_natural_language_intent(): void
+    {
+        $response = $this->actingAs($this->user)->postJson('/api/chat', [
+            'empresaId' => $this->empresa->id,
+            'mensagem' => 'Quero investir R$ 3.000 este mês para vender hambúrguer',
+        ]);
+
+        $response->assertStatus(200);
+        $response->assertJsonPath('success', true);
+        $response->assertJsonPath('resposta.comandoEstruturado.tipo', 'CRIAR_CAMPANHA');
+    }
+
+    public function test_audiences_lookalike_and_sync_api(): void
+    {
+        $response = $this->actingAs($this->user)->postJson('/api/publicos/lookalike', [
+            'empresaId' => $this->empresa->id,
+            'ratio' => 0.01,
+        ]);
+
+        $response->assertStatus(200);
+        $response->assertJsonPath('success', true);
+    }
+
+    public function test_minha_ia_modo_update(): void
+    {
+        $response = $this->actingAs($this->user)->postJson('/api/minha-ia/modo', [
+            'empresaId' => $this->empresa->id,
+            'modo_operacao' => 'AUTOMATICO',
+        ]);
+
+        $response->assertStatus(200);
+        $response->assertJsonPath('success', true);
+        $response->assertJsonPath('modo_operacao', 'AUTOMATICO');
     }
 }
