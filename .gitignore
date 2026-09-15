@@ -42,6 +42,3 @@ Thumbs.db
 /reference-nextjs/
 /scratch/
 
-# Agent / Skills (mantidas globalmente em ~/.gemini/config/skills/)
-/.agents/
-skills-lock.json
