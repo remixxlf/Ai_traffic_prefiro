@@ -103,7 +103,6 @@ Inspirado no fluxo de onboarding e na sofisticação da plataforma **Canny**:
 
 ```
 epic-noether/
-├── .agents/                 # Definições de skills de engenharia e regras de fluxo
 ├── docs/                    # Documentação complementar do sistema
 ├── prisma/
 │   ├── migrations/          # Histórico de migrações relacionais do Prisma
