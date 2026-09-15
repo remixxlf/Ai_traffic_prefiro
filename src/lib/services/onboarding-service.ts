@@ -49,6 +49,7 @@ export class OnboardingService {
         segmento: data.segmento || null,
         cidade: data.cidade || null,
         estado: data.estado || null,
+        site: data.site || null,         // URL do restaurante (PDF Seção 8 — Etapa 1)
       }
     });
 

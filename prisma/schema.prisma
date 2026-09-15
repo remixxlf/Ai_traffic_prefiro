@@ -15,6 +15,7 @@ model Empresa {
   segmento         String?  // ex: Pizzaria, Hamburgueria
   cidade           String?
   estado           String?
+  site             String?  // URL do restaurante (PDF Seção 8 — Etapa 1)
   raio_atendimento Float?   // Raio em KM
   ticket_medio     Float?
   produtos_chave   String?  // JSON string ou texto

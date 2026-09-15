@@ -39,6 +39,7 @@ export default function OnboardingWizard({ usuarioId, onComplete }: OnboardingWi
   const [segmento, setSegmento] = useState('');
   const [cidade, setCidade] = useState('');
   const [estado, setEstado] = useState('');
+  const [site, setSite] = useState('');
 
   // Passo 2
   const [raioAtendimento, setRaioAtendimento] = useState('');
@@ -73,7 +74,7 @@ export default function OnboardingWizard({ usuarioId, onComplete }: OnboardingWi
       switch (step) {
         case 1:
           if (!nome.trim()) { setError('Nome do negócio é obrigatório.'); setLoading(false); return; }
-          data = { nome, segmento, cidade, estado };
+          data = { nome, segmento, cidade, estado, site: site || undefined };
           break;
         case 2:
           data = {
@@ -234,6 +235,18 @@ export default function OnboardingWizard({ usuarioId, onComplete }: OnboardingWi
                     className="w-full bg-white text-slate-900 rounded-xl px-4 py-3 border border-slate-200 text-sm focus:border-indigo-600 focus:ring-2 focus:ring-indigo-500/10 focus:outline-none transition-all shadow-sm uppercase font-semibold"
                   />
                 </div>
+              </div>
+              <div>
+                <label className="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1.5">
+                  Site do negócio
+                </label>
+                <input
+                  type="url"
+                  value={site}
+                  onChange={e => setSite(e.target.value)}
+                  placeholder="Ex: https://www.suapizzaria.com.br"
+                  className="w-full bg-white text-slate-900 rounded-xl px-4 py-3 border border-slate-200 text-sm focus:border-indigo-600 focus:ring-2 focus:ring-indigo-500/10 focus:outline-none transition-all shadow-sm"
+                />
               </div>
             </div>
           )}

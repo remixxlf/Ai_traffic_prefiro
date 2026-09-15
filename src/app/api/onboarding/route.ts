@@ -9,7 +9,7 @@ import { z } from 'zod';
 
 const OnboardingRequestSchema = z.object({
   step: z.union([z.literal(1), z.literal(2), z.literal(3), z.literal(4)]),
-  empresaId: z.string().optional(),
+  empresaId: z.string().nullish(), // null | undefined aceitados (passo 1 ainda não tem empresa)
   usuarioId: z.string(),
   data: z.record(z.string(), z.any())
 });
@@ -23,7 +23,7 @@ export async function POST(request: NextRequest) {
     const empresa = await service.processStep(
       {
         step: parsed.step,
-        empresaId: parsed.empresaId,
+        empresaId: parsed.empresaId ?? undefined, // null → undefined para o serviço
         data: parsed.data
       },
       parsed.usuarioId
