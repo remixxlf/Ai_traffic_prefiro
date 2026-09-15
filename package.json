@@ -6,7 +6,13 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "vitest run --fileParallelism=false"
+    "test": "vitest run --fileParallelism=false",
+    "typecheck": "tsc --noEmit",
+    "seed": "tsx scripts/seed.ts",
+    "check:integrity": "tsx scripts/verify-integrity.ts"
+  },
+  "prisma": {
+    "seed": "tsx scripts/seed.ts"
   },
   "dependencies": {
     "@prisma/client": "^6.19.3",
