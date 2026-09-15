@@ -1,0 +1,35 @@
+{
+  "name": "plataforma-gestao-trafego-ia",
+  "description": "Plataforma SaaS B2B de Gestão de Tráfego com IA para Restaurantes e Delivery",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "test": "vitest run --fileParallelism=false"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.19.3",
+    "clsx": "^2.1.1",
+    "groq-sdk": "^1.6.0",
+    "lucide-react": "^0.453.0",
+    "next": "14.2.15",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tailwind-merge": "^2.5.4",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@types/node": "^20.17.0",
+    "@types/react": "^18.3.11",
+    "@types/react-dom": "^18.3.1",
+    "autoprefixer": "^10.4.20",
+    "pdf-parse": "^2.4.5",
+    "postcss": "^8.4.47",
+    "prisma": "^6.19.3",
+    "tailwindcss": "^3.4.14",
+    "tsx": "^4.23.13",
+    "typescript": "^5.6.3",
+    "vitest": "^4.1.11"
+  }
+}

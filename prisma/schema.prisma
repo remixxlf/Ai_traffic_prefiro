@@ -1,0 +1,548 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// 1. Empresa (Multi-tenant Tenant root - PDF Seção 6)
+model Empresa {
+  id               String   @id @default(uuid())
+  nome             String
+  slug_prefiro     String?  @unique
+  segmento         String?  // ex: Pizzaria, Hamburgueria
+  cidade           String?
+  estado           String?
+  raio_atendimento Float?   // Raio em KM
+  ticket_medio     Float?
+  produtos_chave   String?  // JSON string ou texto
+  descricao        String?
+  publico_alvo     String?
+  created_at       DateTime @default(now())
+  updated_at       DateTime @updatedAt
+
+  // Memória do Negócio (PDF Seção 46)
+  horario_forte_inicio String? // ex: "19:00"
+  horario_forte_fim    String? // ex: "23:00"
+  dias_fortes          String? // ex: "sexta, sabado, domingo"
+  produto_mais_vendido String?
+
+  // Modos de Operação (PDF Seção 41)
+  modo_operacao        String  @default("ASSISTIDO") // MANUAL, ASSISTIDO, AUTOMATICO
+  orcamento_max_diario Float?  @default(500.0)
+
+  // Relações
+  usuarios           EmpresaUsuario[]
+  integracoes_meta   IntegracaoMeta[]
+  meta_businesses    MetaBusiness[]
+  meta_ad_accounts   MetaAdAccount[]
+  meta_pages         MetaPage[]
+  meta_instagrams    MetaInstagram[]
+  meta_pixels        MetaPixel[]
+  meta_catalogos     MetaCatalogo[]
+  meta_produtos      MetaProduto[]
+  campanhas          Campanha[]
+  conjuntos_anuncio  ConjuntoAnuncio[]
+  anuncios           Anuncio[]
+  criativos          Criativo[]
+  publicos           Publico[]
+  recomendacoes_ia   RecomendacaoIa[]
+  automacoes         Automacao[]
+  aprovacoes         Aprovacao[]
+  alertas            Alerta[]
+  auditorias         Auditoria[]
+
+  @@map("empresa")
+}
+
+// 2. Usuario (PDF Seção 7)
+model Usuario {
+  id         String   @id @default(uuid())
+  email      String   @unique
+  nome       String
+  senha_hash String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  empresas   EmpresaUsuario[]
+  aprovacoes Aprovacao[]
+  auditorias Auditoria[]
+
+  @@map("usuario")
+}
+
+// 3. EmpresaUsuario (Pivot com RBAC - PDF Seção 6 e 7)
+model EmpresaUsuario {
+  id         String   @id @default(uuid())
+  empresa_id String
+  usuario_id String
+  role       String   @default("ADMINISTRADOR") // ADMINISTRADOR, GESTOR, ANALISTA, CLIENTE, SOMENTE_LEITURA
+  created_at DateTime @default(now())
+
+  empresa    Empresa  @relation(fields: [empresa_id], references: [id], onDelete: Cascade)
+  usuario    Usuario  @relation(fields: [usuario_id], references: [id], onDelete: Cascade)
+
+  @@unique([empresa_id, usuario_id])
+  @@map("empresa_usuario")
+}
+
+// 4. IntegracaoMeta (PDF Seção 9 e 10)
+model IntegracaoMeta {
+  id                   String    @id @default(uuid())
+  empresa_id           String
+  access_token         String
+  token_expires_at     DateTime?
+  status               String    @default("CONECTADO") // CONECTADO, PENDENTE, DESCONECTADO
+  meta_user_id         String?
+  last_sync_at         DateTime?
+  created_at           DateTime  @default(now())
+  updated_at           DateTime  @updatedAt
+
+  empresa              Empresa   @relation(fields: [empresa_id], references: [id], onDelete: Cascade)
+
+  @@map("integracao_meta")
+}
+
+// 5. MetaBusiness (Portfolio Meta - PDF Seção 9)
+model MetaBusiness {
+  id                   String   @id @default(uuid())
+  empresa_id           String
+  meta_business_id     String
+  name                 String
+  status               String   @default("CONECTADO")
+  created_at           DateTime @default(now())
+
+  empresa              Empresa  @relation(fields: [empresa_id], references: [id], onDelete: Cascade)
+
+  @@map("meta_business")
+}
+
+// 6. MetaAdAccount (Conta de Anúncios - PDF Seção 9 e 10)
+model MetaAdAccount {
+  id                 String   @id @default(uuid())
+  empresa_id         String
+  meta_account_id    String
+  name               String
+  currency           String   @default("BRL")
+  timezone           String   @default("America/Sao_Paulo")
+  status             String   @default("ACTIVE")
+  account_health     Int      @default(100) // Score de 0 a 100
+  payment_method_ok  Boolean  @default(true)
+  created_at         DateTime @default(now())
+
+  empresa            Empresa  @relation(fields: [empresa_id], references: [id], onDelete: Cascade)
+
+  @@map("meta_ad_account")
+}
+
+// 7. MetaPage (Páginas do Facebook - PDF Seção 9 e 10)
+model MetaPage {
+  id           String   @id @default(uuid())
+  empresa_id   String
+  meta_page_id String
+  name         String
+  is_connected Boolean  @default(true)
+  created_at   DateTime @default(now())
+
+  empresa      Empresa  @relation(fields: [empresa_id], references: [id], onDelete: Cascade)
+
+  @@map("meta_page")
+}
+
+// 8. MetaInstagram (Contas Instagram - PDF Seção 9 e 10)
+model MetaInstagram {
+  id                String   @id @default(uuid())
+  empresa_id        String
+  meta_instagram_id String
+  username          String
+  is_connected      Boolean  @default(true)
+  created_at        DateTime @default(now())
+
+  empresa           Empresa  @relation(fields: [empresa_id], references: [id], onDelete: Cascade)
+
+  @@map("meta_instagram")
+}
+
+// 9. MetaPixel (Pixel Meta - PDF Seção 55, 56, 57)
+model MetaPixel {
+  id             String    @id @default(uuid())
+  empresa_id     String
+  meta_pixel_id  String
+  name           String
+  status         String    @default("ATIVO") // ATIVO, INATIVO, COM_ERRO
+  last_event_at  DateTime?
+  has_purchase   Boolean   @default(false)
+  has_add_to_cart Boolean  @default(false)
+  capi_enabled   Boolean   @default(false) // Conversion API
+  created_at     DateTime  @default(now())
+
+  empresa        Empresa   @relation(fields: [empresa_id], references: [id], onDelete: Cascade)
+
+  @@map("meta_pixel")
+}
+
+// 10. MetaCatalogo (Catálogo de Produtos na Meta - PDF Seção 28 e 29)
+model MetaCatalogo {
+  id               String    @id @default(uuid())
+  empresa_id       String
+  meta_catalog_id  String
+  name             String
+  feed_url         String?
+  total_products   Int       @default(0)
+  active_products  Int       @default(0)
+  error_products   Int       @default(0)
+  last_sync_at     DateTime?
+  next_sync_at     DateTime?
+  status           String    @default("SINCRONIZADO")
+  created_at       DateTime  @default(now())
+
+  empresa          Empresa   @relation(fields: [empresa_id], references: [id], onDelete: Cascade)
+  produtos         MetaProduto[]
+
+  @@map("meta_catalogo")
+}
+
+// 11. MetaProduto (Produtos do Cardápio / XML - PDF Seção 30 e 31)
+model MetaProduto {
+  id                String    @id @default(uuid())
+  empresa_id        String
+  catalogo_id       String?
+  external_id       String    // ID no Prefiro Delivery
+  nome              String
+  descricao         String?
+  preco             Float
+  preco_promocional Float?
+  disponibilidade   Boolean   @default(true)
+  categoria         String?
+  url_produto       String?
+  url_imagem        String?
+  marca             String?
+  status            String    @default("ATIVO")
+  updated_at        DateTime  @updatedAt
+
+  empresa           Empresa       @relation(fields: [empresa_id], references: [id], onDelete: Cascade)
+  catalogo          MetaCatalogo? @relation(fields: [catalogo_id], references: [id], onDelete: SetNull)
+  metricas          ProdutoMetrica[]
+  criativos         Criativo[]
+
+  @@unique([empresa_id, external_id])
+  @@map("meta_produto")
+}
+
+// 12. Campanha (Campanhas de Anúncios - PDF Seção 20 e 58)
+model Campanha {
+  id                String   @id @default(uuid())
+  empresa_id        String
+  meta_campaign_id  String?  @unique
+  nome              String
+  objetivo          String   @default("OUTCOME_SALES") // Vendas
+  status            String   @default("PAUSED") // ACTIVE, PAUSED, ARCHIVED
+  orcamento_diario  Float?
+  orcamento_total   Float?
+  tipo_anuncio      String   @default("PADRAO") // PADRAO, CATALOGO
+  created_at        DateTime @default(now())
+  updated_at        DateTime @updatedAt
+
+  empresa           Empresa           @relation(fields: [empresa_id], references: [id], onDelete: Cascade)
+  conjuntos         ConjuntoAnuncio[]
+  metricas          CampanhaMetrica[]
+
+  @@map("campanha")
+}
+
+// 13. ConjuntoAnuncio (AdSet - PDF Seção 20)
+model ConjuntoAnuncio {
+  id                String   @id @default(uuid())
+  empresa_id        String
+  campanha_id       String
+  meta_adset_id     String?  @unique
+  nome              String
+  status            String   @default("PAUSED")
+  orcamento_diario  Float?
+  publico_alvo_desc String?
+  created_at        DateTime @default(now())
+  updated_at        DateTime @updatedAt
+
+  empresa           Empresa           @relation(fields: [empresa_id], references: [id], onDelete: Cascade)
+  campanha          Campanha          @relation(fields: [campanha_id], references: [id], onDelete: Cascade)
+  anuncios          Anuncio[]
+  metricas          ConjuntoMetrica[]
+
+  @@map("conjunto_anuncio")
+}
+
+// 14. Anuncio (Ad - PDF Seção 20)
+model Anuncio {
+  id                  String   @id @default(uuid())
+  empresa_id          String
+  conjunto_anuncio_id String
+  criativo_id         String?
+  meta_ad_id          String?  @unique
+  nome                String
+  status              String   @default("PAUSED")
+  fadiga_detectada    Boolean  @default(false) // PDF Seção 40
+  created_at          DateTime @default(now())
+  updated_at          DateTime @updatedAt
+
+  empresa             Empresa         @relation(fields: [empresa_id], references: [id], onDelete: Cascade)
+  conjunto            ConjuntoAnuncio @relation(fields: [conjunto_anuncio_id], references: [id], onDelete: Cascade)
+  criativo            Criativo?       @relation(fields: [criativo_id], references: [id], onDelete: SetNull)
+  metricas            AnuncioMetrica[]
+
+  @@map("anuncio")
+}
+
+// 15. Criativo (Biblioteca de Criativos - PDF Seção 35, 37, 39, 40)
+model Criativo {
+  id               String   @id @default(uuid())
+  empresa_id       String
+  meta_creative_id String?
+  nome             String
+  tipo             String   @default("IMAGEM") // IMAGEM, VIDEO, CARROSSEL
+  formato          String?  @default("1:1") // 1:1, 4:5, 9:16 (Seção 35)
+  produto_id       String?
+  categoria        String?
+  tags             String?  // JSON string com tags
+  texto_principal  String?
+  titulo           String?
+  descricao        String?
+  cta              String?  @default("ORDER_NOW") // Peça Agora
+  url_midia        String?
+  foco_estrategia  String?  // PRODUTO, BENEFICIO, URGENCIA (PDF Seção 37)
+  status_fadiga    String   @default("SAUDAVEL") // SAUDAVEL, SATURADO, CRITICO (Seção 40)
+  
+  // Métricas associadas (Seção 39)
+  impressoes       Int      @default(0)
+  cliques          Int      @default(0)
+  ctr              Float    @default(0.0)
+  frequencia       Float    @default(1.0)
+  conversoes       Int      @default(0)
+  cpa              Float    @default(0.0)
+  roas             Float    @default(0.0)
+  investimento     Float    @default(0.0)
+  receita          Float    @default(0.0)
+
+  created_at       DateTime @default(now())
+
+  empresa          Empresa      @relation(fields: [empresa_id], references: [id], onDelete: Cascade)
+  produto          MetaProduto? @relation(fields: [produto_id], references: [id], onDelete: SetNull)
+  anuncios         Anuncio[]
+
+  @@map("criativo")
+}
+
+// 16. Publico (Biblioteca de Públicos - PDF Seção 21, 23, 25, 26)
+model Publico {
+  id                 String   @id @default(uuid())
+  empresa_id         String
+  meta_audience_id   String?
+  nome               String
+  tipo               String   // GEOGRAFICO, CUSTOM_CLIENTES, LOOKALIKE
+  origem             String?  // ex: "Clientes Prefiro Delivery"
+  descricao          String?
+  tamanho_estimado   Int?
+  cidade             String?
+  raio_km            Float?
+  idade_min          Int?     @default(18)
+  idade_max          Int?     @default(65)
+  created_at         DateTime @default(now())
+
+  empresa            Empresa  @relation(fields: [empresa_id], references: [id], onDelete: Cascade)
+
+  @@map("publico")
+}
+
+// 17. CampanhaMetrica (Snapshots diários de métricas da Meta - PDF Seção 73)
+model CampanhaMetrica {
+  id           String   @id @default(uuid())
+  campanha_id  String
+  data         DateTime
+  investimento Float    @default(0.0)
+  impressoes   Int      @default(0)
+  alcance      Int      @default(0)
+  cliques      Int      @default(0)
+  ctr          Float    @default(0.0)
+  cpc          Float    @default(0.0)
+  cpm          Float    @default(0.0)
+  frequencia   Float    @default(0.0)
+  conversoes   Int      @default(0)
+  vendas       Int      @default(0)
+  receita      Float    @default(0.0)
+  cpa          Float    @default(0.0)
+  roas         Float    @default(0.0)
+  
+  // Métricas próprias reconciliadas com Prefiro Delivery (PDF Seção 52 e 53)
+  pedidos_reais Int     @default(0)
+  receita_real  Float   @default(0.0)
+  roas_real     Float   @default(0.0)
+  cpa_real      Float   @default(0.0)
+
+  campanha     Campanha @relation(fields: [campanha_id], references: [id], onDelete: Cascade)
+
+  @@unique([campanha_id, data])
+  @@map("campanha_metrica")
+}
+
+// 18. ConjuntoMetrica
+model ConjuntoMetrica {
+  id                  String          @id @default(uuid())
+  conjunto_anuncio_id String
+  data                DateTime
+  investimento        Float           @default(0.0)
+  cliques             Int             @default(0)
+  conversoes          Int             @default(0)
+  cpa                 Float           @default(0.0)
+  roas                Float           @default(0.0)
+
+  conjunto            ConjuntoAnuncio @relation(fields: [conjunto_anuncio_id], references: [id], onDelete: Cascade)
+
+  @@unique([conjunto_anuncio_id, data])
+  @@map("conjunto_metrica")
+}
+
+// 19. AnuncioMetrica
+model AnuncioMetrica {
+  id           String   @id @default(uuid())
+  anuncio_id   String
+  data         DateTime
+  investimento Float    @default(0.0)
+  impressoes   Int      @default(0)
+  cliques      Int      @default(0)
+  ctr          Float    @default(0.0)
+  frequencia   Float    @default(0.0)
+  cpa          Float    @default(0.0)
+  roas         Float    @default(0.0)
+
+  anuncio      Anuncio  @relation(fields: [anuncio_id], references: [id], onDelete: Cascade)
+
+  @@unique([anuncio_id, data])
+  @@map("anuncio_metrica")
+}
+
+// 20. ProdutoMetrica
+model ProdutoMetrica {
+  id           String      @id @default(uuid())
+  produto_id   String
+  data         DateTime
+  vendas       Int         @default(0)
+  receita      Float       @default(0.0)
+
+  produto      MetaProduto @relation(fields: [produto_id], references: [id], onDelete: Cascade)
+
+  @@unique([produto_id, data])
+  @@map("produto_metrica")
+}
+
+// 21. RecomendacaoIa (Motor de Recomendações - PDF Seção 75)
+model RecomendacaoIa {
+  id             String    @id @default(uuid())
+  empresa_id     String
+  tipo           String    // OPORTUNIDADE, ATENCAO, BEM_SUCEDIDO
+  entidade_tipo  String    // CAMPANHA, CONJUNTO, ANUNCIO, PUBLICO
+  entidade_id    String?
+  titulo         String
+  analise        String
+  motivo         String
+  acao_sugerida  String
+  impacto_prev   String?   // ALTO, MEDIO, BAIXO
+  nivel_confianca Float    @default(0.9)
+  risco          String    @default("BAIXO") // BAIXO, MEDIO, ALTO
+  status         String    @default("NOVA")  // NOVA, APROVADA, RECUSADA, EXECUTADA, EXPIRADA
+  created_at     DateTime  @default(now())
+  executed_at    DateTime?
+
+  empresa        Empresa   @relation(fields: [empresa_id], references: [id], onDelete: Cascade)
+  aprovacao      Aprovacao?
+
+  @@map("recomendacao_ia")
+}
+
+// 22. Automacao (Regras de Automação - PDF Seção 44)
+model Automacao {
+  id          String   @id @default(uuid())
+  empresa_id  String
+  nome        String
+  ativa       Boolean  @default(true)
+  condicao    String   // ex: JSON { "cpa_gt": 30, "investimento_gt": 150 }
+  acao        String   // ex: JSON { "tipo": "PAUSAR_ANUNCIO" }
+  created_at  DateTime @default(now())
+
+  empresa     Empresa  @relation(fields: [empresa_id], references: [id], onDelete: Cascade)
+  execucoes   AutomacaoExecucao[]
+
+  @@map("automacao")
+}
+
+// 23. AutomacaoExecucao
+model AutomacaoExecucao {
+  id           String    @id @default(uuid())
+  automacao_id String
+  alvo_id      String
+  status       String    @default("SUCESSO")
+  detalhes     String?
+  executed_at  DateTime  @default(now())
+
+  automacao    Automacao @relation(fields: [automacao_id], references: [id], onDelete: Cascade)
+
+  @@map("automacao_execucao")
+}
+
+// 24. Aprovacao (Centro de Aprovações - PDF Seção 66)
+model Aprovacao {
+  id                 String          @id @default(uuid())
+  empresa_id         String
+  recomendacao_id    String?         @unique
+  usuario_id         String?
+  titulo             String
+  descricao          String
+  acao_tipo          String          // ALTERAR_ORCAMENTO, PAUSAR_ANUNCIO, etc.
+  payload            String          // JSON com os dados da alteração
+  status             String          @default("PENDENTE") // PENDENTE, APROVADO, RECUSADO
+  motivo_recusa      String?
+  decidido_em        DateTime?
+  created_at         DateTime        @default(now())
+
+  empresa            Empresa         @relation(fields: [empresa_id], references: [id], onDelete: Cascade)
+  recomendacao       RecomendacaoIa? @relation(fields: [recomendacao_id], references: [id], onDelete: SetNull)
+  usuario            Usuario?        @relation(fields: [usuario_id], references: [id], onDelete: SetNull)
+
+  @@map("aprovacao")
+}
+
+// 25. Alerta (Central de Alertas - PDF Seção 61)
+model Alerta {
+  id          String   @id @default(uuid())
+  empresa_id  String
+  tipo        String   // REJEICAO, QUEDA_ROAS, AUMENTO_CPA, PIXEL_OFFLINE, etc.
+  titulo      String
+  mensagem    String
+  nivel       String   @default("ATENCAO") // INFORMATIVO, ATENCAO, CRITICO
+  lido        Boolean  @default(false)
+  created_at  DateTime @default(now())
+
+  empresa     Empresa  @relation(fields: [empresa_id], references: [id], onDelete: Cascade)
+
+  @@map("alerta")
+}
+
+// 26. Auditoria (Histórico de Alterações Auditável - PDF Seção 64 e 65)
+model Auditoria {
+  id            String   @id @default(uuid())
+  empresa_id    String
+  usuario_id    String?
+  origem        String   // IA, USUARIO, AUTOMACAO, SINCRONIZACAO_META, ADMINISTRADOR
+  entidade_tipo String   // CAMPANHA, CONJUNTO, ANUNCIO, ORCAMENTO
+  entidade_id   String
+  campo         String?  // ex: orcamento_diario
+  valor_anterior String?
+  valor_novo    String?
+  motivo        String?
+  created_at    DateTime @default(now())
+
+  empresa       Empresa  @relation(fields: [empresa_id], references: [id], onDelete: Cascade)
+  usuario       Usuario? @relation(fields: [usuario_id], references: [id], onDelete: SetNull)
+
+  @@map("auditoria")
+}

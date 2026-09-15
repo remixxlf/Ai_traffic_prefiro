@@ -1,0 +1,1572 @@
+Plataforma de Gestão de Tráfego com Inteligência
+Artificial
+Versão: 1.0
+Data: Setembro/2026
+Modelo: SaaS
+Integração inicial: Prefiro Delivery + Meta Ads
+Expansão futura: E-commerces, restaurantes, lojas, prestadores de serviços e empresas em
+geral.
+1. VISÃO DO PRODUTO
+A plataforma será um sistema SaaS de gestão de tráfego pago com Inteligência Artificial,
+integrado à API da Meta, permitindo que empresários criem, acompanhem, analisem e
+otimizem campanhas do Meta Ads sem necessidade de conhecimento técnico avançado
+sobre gestão de tráfego.
+A principal proposta do produto é:
+Criar, gerenciar e otimizar campanhas do Meta Ads com o mínimo de
+conhecimento técnico possível.
+O sistema funcionará como um Gestor de Tráfego com IA.
+A plataforma deverá transformar configurações tradicionalmente complexas do Gerenciador
+de Anúncios da Meta em uma experiência simplificada e orientada a objetivos comerciais.
+O empresário informa o que deseja vender, quanto pretende investir e algumas informações
+sobre seu negócio.
+A Inteligência Artificial poderá cuidar do restante da configuração.
+2. OBJETIVO DO PRODUTO
+Permitir que uma empresa consiga realizar o fluxo completo de mídia paga:
+Conectar Meta → Configurar negócio → Criar campanha → Definir público → Criar anúncio
+→ Publicar → Acompanhar resultados → Receber análises da IA → Otimizar campanhas.
+
+-- 1 of 59 --
+
+Tudo dentro de uma única plataforma.
+O usuário não deverá precisar acessar o Gerenciador de Anúncios da Meta para operações
+rotineiras.
+3. PÚBLICO-ALVO
+Inicialmente, a plataforma será disponibilizada aos clientes da Prefiro Delivery.
+Principal público:
+● donos de restaurantes;
+● pizzarias;
+● hamburguerias;
+● marmitarias;
+● estabelecimentos de delivery;
+● empresários sem conhecimento técnico em tráfego pago.
+Posteriormente, a plataforma poderá ser comercializada para qualquer empresa que utilize
+Meta Ads.
+Exemplos:
+● e-commerce;
+● varejo;
+● clínicas;
+● academias;
+● escolas;
+● prestadores de serviços;
+● profissionais liberais;
+● franquias;
+● agências.
+4. POSICIONAMENTO
+A plataforma não deverá se posicionar apenas como outro gerenciador de anúncios.
+O diferencial será:
+Um gestor de tráfego com Inteligência Artificial.
+
+-- 2 of 59 --
+
+O sistema deverá interpretar dados, apresentar recomendações e, conforme o nível de
+autonomia autorizado pelo usuário, executar ações.
+A experiência deverá ser muito mais próxima da contratação de um gestor de tráfego do que
+da utilização de uma ferramenta técnica.
+5. PRINCÍPIO DE EXPERIÊNCIA
+O usuário não deve precisar conhecer conceitos avançados do Meta Ads.
+Em vez de solicitar dezenas de configurações técnicas, a plataforma poderá perguntar:
+O que você quer vender?
+Exemplo:
+Quero aumentar as vendas da minha pizzaria.
+Onde estão seus clientes?
+Feira de Santana.
+Quanto deseja investir?
+R$ 100 por dia.
+Qual produto deseja divulgar?
+Pizza Grande + Refrigerante.
+A IA transforma essas informações em uma campanha.
+6. ESTRUTURA MULTIEMPRESA
+A plataforma deverá possuir arquitetura multi-tenant.
+Estrutura sugerida:
+Conta SaaS
+→ Empresa
+→ Usuários
+→ Integrações
+
+-- 3 of 59 --
+
+→ Business Meta
+→ Contas de anúncio
+→ Páginas
+→ Instagram
+→ Pixels
+→ Catálogos
+→ Campanhas
+Uma empresa poderá possuir múltiplas unidades e múltiplas contas de anúncios.
+Agências futuramente poderão gerenciar diversas empresas através da mesma conta.
+7. PERFIS DE ACESSO
+Inicialmente:
+Administrador
+Acesso completo.
+Pode:
+● conectar Meta;
+● cadastrar usuários;
+● criar campanhas;
+● aprovar recomendações;
+● alterar orçamento;
+● configurar automações;
+● visualizar relatórios;
+● administrar integrações.
+Gestor
+Pode administrar campanhas e anúncios.
+Analista
+Pode visualizar resultados e gerar análises.
+Cliente
+Pode visualizar indicadores e aprovar determinadas ações.
+Somente leitura
+
+-- 4 of 59 --
+
+Pode apenas visualizar informações.
+As permissões deverão futuramente ser configuráveis.
+8. ONBOARDING
+Ao acessar pela primeira vez, o cliente passará por um processo guiado.
+Etapa 1 — Empresa
+Informações:
+● nome;
+● segmento;
+● site;
+● cidade;
+● estado;
+● área de atuação;
+● descrição;
+● produtos principais;
+● ticket médio;
+● público-alvo.
+Clientes Prefiro Delivery deverão ter esses dados importados automaticamente quando
+possível.
+9. CONEXÃO COM A META
+O usuário deverá conectar sua conta Meta através do fluxo oficial de autenticação e
+autorização.
+Após a conexão, o sistema identifica os ativos disponíveis.
+Exibir:
+Business
+Business Portfolio conectado.
+Conta de anúncios
+
+-- 5 of 59 --
+
+Permitir selecionar uma ou mais.
+Facebook
+Páginas disponíveis.
+Instagram
+Contas disponíveis.
+Pixel
+Pixels disponíveis.
+Catálogo
+Catálogos disponíveis.
+10. CENTRAL DE INTEGRAÇÕES
+Tela:
+Configurações → Integrações → Meta
+Mostrar status de cada integração.
+Exemplo:
+Meta Business
+🟢 Conectado
+Conta de anúncios
+🟢 123456789
+Facebook
+🟢 Minha Pizzaria
+Instagram
+🟢 @minhapizzaria
+Pixel
+🟢 Ativo
+Conversion API
+🟢 Ativa
+
+-- 6 of 59 --
+
+Catálogo
+🟡 Não configurado
+11. DIAGNÓSTICO DA CONTA
+O sistema deverá realizar automaticamente uma auditoria da estrutura Meta.
+Exemplo:
+Saúde da conta
+87/100
+Itens:
+● conta conectada;
+● página conectada;
+● Instagram conectado;
+● Pixel ativo;
+● Conversion API ativa;
+● evento Purchase funcionando;
+● catálogo atualizado;
+● método de pagamento válido;
+● anúncios ativos;
+● qualidade dos eventos;
+● histórico recente.
+12. DASHBOARD PRINCIPAL
+A tela principal deverá apresentar informações de negócio, e não apenas métricas técnicas.
+Cards principais:
+Investimento
+Receita
+Vendas
+ROAS
+
+-- 7 of 59 --
+
+Custo por venda
+Ticket médio
+Secundários:
+● alcance;
+● impressões;
+● CPM;
+● CTR;
+● CPC;
+● frequência;
+● conversões.
+13. VISÃO DA INTELIGÊNCIA ARTIFICIAL
+Uma das principais áreas da home deverá ser:
+Minha IA
+Exemplo:
+Sua publicidade está saudável.
+Nos últimos 7 dias:
+Investimento
+R$ 1.850
+Vendas
+R$ 11.400
+ROAS
+6,16
+A IA deverá apresentar três grupos.
+Está indo bem
+Exemplo:
+Sua campanha de pizza está com ROAS 32% superior à média dos últimos 30
+dias.
+
+-- 8 of 59 --
+
+Precisa de atenção
+O anúncio "Pizza Família" apresentou queda de 28% no CTR.
+Oportunidades
+Existe possibilidade de aumentar o orçamento da campanha "Rodízio" em
+aproximadamente 15%.
+14. CRIAÇÃO DE CAMPANHA
+Botão principal:
++ Criar campanha
+A criação deverá priorizar uma experiência guiada.
+15. CAMPANHA COM IA
+O sistema pergunta:
+O que você deseja divulgar?
+O usuário poderá escrever livremente.
+Exemplo:
+Quero vender mais pizza no final de semana.
+A IA interpreta a solicitação.
+16. OBJETIVO INICIAL
+O MVP deverá ser focado em:
+
+-- 9 of 59 --
+
+Vendas através do site
+O objetivo principal é gerar conversões no site do cliente.
+Outros objetivos poderão entrar posteriormente.
+17. DEFINIÇÃO DO PRODUTO
+A IA poderá perguntar:
+O que deseja anunciar?
+Quando integrado ao Prefiro Delivery, os produtos poderão ser importados
+automaticamente.
+Exemplo:
+● Pizza Portuguesa;
+● Combo Família;
+● Hambúrguer Bacon;
+● Marmita Fitness;
+● Promoção de domingo.
+18. ORÇAMENTO
+Pergunta:
+Quanto deseja investir?
+Opções:
+Por dia
+ou
+Total da campanha
+Exemplo:
+R$ 50/dia
+
+-- 10 of 59 --
+
+R$ 100/dia
+R$ 200/dia
+Valor personalizado.
+19. RECOMENDAÇÃO DE ORÇAMENTO
+A IA poderá recomendar um valor.
+Exemplo:
+Considerando seu segmento, região, histórico e tamanho estimado do público,
+recomendamos começar com R$ 80 por dia.
+O usuário poderá aceitar ou alterar.
+20. CRIAÇÃO AUTOMÁTICA DA
+ESTRUTURA META
+A plataforma deverá ser capaz de criar:
+Campanha
+↓
+Conjunto de anúncios
+↓
+Anúncios
+através da API da Meta.
+21. PÚBLICOS
+A plataforma deverá permitir trabalhar com:
+
+-- 11 of 59 --
+
+Públicos geográficos
+● país;
+● estado;
+● cidade;
+● raio;
+● regiões.
+Dados demográficos
+● idade;
+● gênero.
+Interesses
+Quando disponíveis através das APIs e produtos atuais da Meta.
+Públicos personalizados
+Exemplos:
+● clientes;
+● compradores;
+● visitantes;
+● usuários engajados.
+Lookalike
+Públicos semelhantes.
+22. IA PARA CRIAÇÃO DE PÚBLICO
+O usuário poderá simplesmente informar:
+Tenho uma pizzaria em Feira de Santana.
+A IA poderá sugerir uma estratégia compatível.
+Exemplo:
+Área
+Feira de Santana + região atendida.
+
+-- 12 of 59 --
+
+Idade
+18–55 anos.
+Estratégia
+Público amplo com otimização algorítmica.
+A IA deverá adaptar as estratégias às possibilidades efetivamente disponíveis na Meta
+naquele momento.
+23. BIBLIOTECA DE PÚBLICOS
+Menu:
+Públicos
+Cada público possuirá:
+● nome;
+● descrição;
+● origem;
+● localização;
+● tamanho estimado;
+● campanhas utilizadas;
+● investimento;
+● conversões;
+● CPA;
+● ROAS.
+Exemplo:
+Clientes semelhantes — Feira de Santana
+Origem:
+Clientes Prefiro Delivery.
+Tipo:
+Lookalike.
+
+-- 13 of 59 --
+
+24. INTEGRAÇÃO PREFIRO DELIVERY
+A integração com a Prefiro Delivery deverá ser uma vantagem estratégica inicial do produto.
+Ao conectar uma empresa Prefiro Delivery, o sistema poderá obter dados como:
+● produtos;
+● categorias;
+● pedidos;
+● clientes;
+● ticket médio;
+● frequência de compra;
+● clientes recorrentes;
+● primeira compra;
+● última compra;
+● valor comprado.
+25. PÚBLICO DE CLIENTES
+Clientes Prefiro Delivery poderão originar automaticamente públicos personalizados.
+A criação deverá respeitar requisitos técnicos, contratuais, legais e políticas aplicáveis à
+plataforma Meta e à proteção de dados pessoais.
+Fluxo conceitual:
+Clientes Prefiro
+↓
+normalização dos dados
+↓
+tratamento/hash dos identificadores exigidos
+↓
+Custom Audience
+↓
+Lookalike Audience
+
+-- 14 of 59 --
+
+26. LOOKALIKE AUTOMÁTICO
+Quando houver volume e qualidade suficientes de dados, a plataforma poderá sugerir:
+Encontramos uma base de clientes que pode ser utilizada para encontrar
+pessoas semelhantes.
+Botão:
+Criar público semelhante
+Também poderá haver configuração automática.
+27. SEGMENTAÇÕES BASEADAS NO
+PREFIRO DELIVERY
+Futuramente poderão existir segmentos como:
+Melhores clientes
+Clientes com maior LTV.
+Clientes recorrentes
+Compraram diversas vezes.
+Clientes inativos
+Não compram há determinado período.
+Novos clientes
+Primeira compra recente.
+Alto ticket
+Clientes com ticket acima da média.
+Esses segmentos poderão originar campanhas e públicos.
+
+-- 15 of 59 --
+
+28. CATÁLOGO DE PRODUTOS — PREFIRO
+DELIVERY
+A plataforma deverá possuir integração específica com o catálogo da Prefiro Delivery.
+Endpoint:
+http://prefirodelivery.com/{{slug}}/get-products
+O endpoint fornecerá um XML contendo o cardápio/produtos da empresa.
+29. SINCRONIZAÇÃO DO CATÁLOGO
+O sistema deverá permitir configurar a origem do catálogo.
+Exemplo:
+Origem
+Prefiro Delivery
+URL
+https://prefirodelivery.com/{{slug}}/get-products
+Atualização
+A cada 1 hora.
+A plataforma deverá consultar periodicamente essa rota e sincronizar o catálogo utilizado
+pela Meta.
+30. IMPORTAÇÃO DO XML
+O serviço deverá:
+1. consultar a URL;
+
+-- 16 of 59 --
+
+2. baixar o XML;
+3. validar estrutura;
+4. processar os produtos;
+5. identificar novos produtos;
+6. identificar produtos alterados;
+7. identificar produtos removidos;
+8. atualizar o catálogo;
+9. registrar erros;
+10. registrar última sincronização.
+31. INFORMAÇÕES DO PRODUTO
+Idealmente o feed deverá possuir:
+● ID;
+● nome;
+● descrição;
+● preço;
+● preço promocional;
+● disponibilidade;
+● categoria;
+● URL;
+● URL da imagem;
+● marca;
+● estabelecimento;
+● status.
+O mapeamento definitivo deverá seguir a especificação de catálogo vigente da Meta durante
+a implementação.
+32. MONITORAMENTO DO CATÁLOGO
+Tela:
+Catálogo → Sincronização
+Mostrar:
+Última atualização
+13/09/2026 21:00
+
+-- 17 of 59 --
+
+Próxima atualização
+13/09/2026 22:00
+Produtos
+134
+Ativos
+128
+Com erro
+6
+33. ANÚNCIO DE CATÁLOGO
+Na criação da campanha haverá uma opção:
+Anúncio de catálogo
+O usuário seleciona:
+Todo o cardápio
+ou
+Categoria
+Exemplos:
+● pizzas;
+● hambúrgueres;
+● bebidas;
+● combos.
+ou
+Produtos específicos
+34. EXPERIÊNCIA SIMPLIFICADA DO
+CATÁLOGO
+
+-- 18 of 59 --
+
+Exemplo:
+Qual produto deseja anunciar?
+Selecionar:
+Meu catálogo
+Em seguida:
+Todos os produtos
+ou
+Escolher produtos
+A plataforma cuida da estrutura técnica necessária junto à Meta.
+35. CRIATIVOS
+A plataforma possuirá uma biblioteca de criativos.
+Menu:
+Criativos
+Permitir:
+● upload de imagem;
+● upload de vídeo;
+● criação através de IA;
+● textos;
+● títulos;
+● descrições;
+● CTA.
+36. IA PARA COPY
+O sistema poderá gerar automaticamente:
+
+-- 19 of 59 --
+
+Texto principal
+Título
+Descrição
+CTA
+Exemplo:
+Produto:
+Pizza Família.
+Objetivo:
+Vendas.
+IA:
+Hoje é dia de reunir todo mundo 🍕 Peça sua Pizza Família pelo nosso site e
+aproveite.
+O usuário poderá:
+Usar
+Gerar novamente
+Editar
+37. VARIAÇÕES DE ANÚNCIOS
+A IA deverá ser capaz de criar múltiplas versões.
+Exemplo:
+Criativo A
+Foco no produto.
+Criativo B
+Foco no benefício.
+
+-- 20 of 59 --
+
+Criativo C
+Foco em urgência.
+O sistema acompanha qual performa melhor.
+38. IA PARA IMAGENS
+Futuramente, a plataforma poderá gerar:
+● banners;
+● imagens promocionais;
+● adaptações de tamanho;
+● fundos;
+● peças publicitárias;
+● variações de criativos.
+39. BIBLIOTECA DE CRIATIVOS
+Cada criativo poderá armazenar seu histórico.
+Exemplo:
+Pizza Família 01
+Utilizado em:
+7 campanhas
+Investimento:
+R$ 4.820
+Vendas:
+632
+CTR:
+2,8%
+ROAS:
+
+-- 21 of 59 --
+
+7,4
+A IA poderá utilizar o histórico para futuras recomendações.
+40. DETECÇÃO DE FADIGA
+O sistema deverá analisar sinais de saturação.
+Exemplo:
+Este anúncio apresenta sinais de fadiga.
+Motivos:
+● frequência aumentou;
+● CTR caiu;
+● CPA aumentou;
+● conversão caiu.
+Recomendação:
+Criar nova variação.
+41. NÍVEIS DE AUTOMAÇÃO
+Cada conta poderá operar em três modos.
+Manual
+A IA analisa e recomenda.
+Nenhuma alteração ocorre automaticamente.
+Assistido
+A IA recomenda.
+Exemplo:
+
+-- 22 of 59 --
+
+Recomendo aumentar o orçamento desta campanha de R$ 100 para R$ 120.
+Botões:
+Aprovar
+Ignorar
+Automático
+A IA poderá executar ações dentro de limites previamente definidos.
+42. AÇÕES AUTOMÁTICAS
+Conforme permissões, a IA poderá:
+● pausar anúncio;
+● pausar conjunto;
+● pausar campanha;
+● aumentar orçamento;
+● reduzir orçamento;
+● duplicar anúncio;
+● criar variação;
+● substituir criativo;
+● redistribuir investimento;
+● testar novo público;
+● recomendar novo público.
+Ações mais críticas deverão possuir limites de segurança.
+43. LIMITES DE SEGURANÇA
+Exemplos:
+Orçamento máximo diário
+R$ 500
+
+-- 23 of 59 --
+
+Aumento máximo por ação
+20%
+Aumento máximo em 24 horas
+30%
+IA pode pausar campanhas?
+Sim / Não
+IA pode publicar anúncios?
+Sim / Não
+44. REGRAS AUTOMÁTICAS
+Além da IA, poderão existir automações determinísticas.
+Exemplo:
+Regra
+Se:
+CPA > R$ 30
+E:
+Investimento > R$ 150
+Então:
+Pausar anúncio.
+45. MOTOR DE INTELIGÊNCIA
+A IA deverá analisar pelo menos:
+● campanhas;
+● conjuntos;
+
+-- 24 of 59 --
+
+● anúncios;
+● criativos;
+● públicos;
+● orçamento;
+● conversões;
+● horários;
+● dias;
+● histórico;
+● catálogo;
+● faturamento real;
+● pedidos;
+● ticket médio;
+● clientes.
+46. MEMÓRIA DO NEGÓCIO
+A IA deverá possuir contexto permanente da empresa.
+Exemplo:
+Empresa
+Pizzaria X.
+Cidade
+Feira de Santana.
+Ticket médio
+R$ 78.
+Produto mais vendido
+Pizza Família.
+Horário forte
+19h–22h.
+Dias fortes
+sexta, sábado e domingo.
+Isso melhora as recomendações.
+
+-- 25 of 59 --
+
+47. CHAT COM IA
+A plataforma deverá disponibilizar um assistente.
+Exemplos de perguntas:
+Como estão minhas campanhas?
+Quanto investi esta semana?
+Qual campanha está vendendo mais?
+Onde estou perdendo dinheiro?
+Qual anúncio devo desligar?
+Vale aumentar meu orçamento?
+Crie uma campanha de R$ 100 por dia para vender pizzas.
+Quero aumentar minhas vendas no final de semana.
+48. COMANDOS POR LINGUAGEM
+NATURAL
+Exemplo:
+Usuário:
+Quero investir R$ 3.000 este mês para vender mais hambúrguer.
+IA deverá ser capaz de montar uma sugestão estruturada:
+Estratégia
+Campanha de vendas.
+Orçamento
+R$ 100/dia.
+
+-- 26 of 59 --
+
+Público
+Região atendida pelo estabelecimento.
+Produtos
+3 hambúrgueres mais vendidos.
+Criativos
+3 variações.
+Destino
+Site Prefiro Delivery.
+Botão:
+Criar campanha
+49. IA COMO ANALISTA
+A IA deverá responder não apenas o que aconteceu, mas principalmente:
+Por que aconteceu?
+e
+O que fazer agora?
+Exemplo:
+Suas vendas caíram 18% nos últimos quatro dias. A principal mudança foi o
+aumento do custo por clique da campanha "Combo Família", enquanto a taxa de
+conversão permaneceu estável.
+Recomendação:
+Testar um novo criativo antes de aumentar o orçamento.
+
+-- 27 of 59 --
+
+50. RELATÓRIO DIÁRIO
+Exemplo:
+Resumo de ontem
+Investido
+R$ 340
+Receita
+R$ 2.480
+Pedidos
+42
+ROAS
+7,29
+Custo por pedido
+R$ 8,09
+Destaque
+Campanha "Pizza Família" gerou 19 pedidos.
+Atenção
+O anúncio "Combo 02" aumentou seu CPA em 34%.
+51. RELATÓRIO SEMANAL
+A IA deverá gerar automaticamente uma análise consolidada.
+Mostrar:
+● investimento;
+● faturamento;
+● pedidos;
+● ROAS;
+● CPA;
+● evolução versus semana anterior;
+
+-- 28 of 59 --
+
+● melhores campanhas;
+● piores campanhas;
+● melhores criativos;
+● oportunidades;
+● ações realizadas pela IA.
+52. RECEITA REAL
+Um grande diferencial da integração com a Prefiro Delivery será cruzar dados da Meta com
+vendas efetivamente realizadas.
+A plataforma deverá diferenciar:
+Conversões atribuídas pela Meta
+e
+Pedidos reais registrados na Prefiro Delivery
+Isso permite gerar métricas próprias.
+53. ROAS REAL
+Além do ROAS informado pela Meta, o sistema poderá calcular:
+ROAS Real
+Receita real atribuível / investimento
+O modelo de atribuição deverá ser documentado separadamente.
+54. FUNIL
+Estrutura sugerida:
+
+-- 29 of 59 --
+
+Impressões
+↓
+Cliques
+↓
+Acessos
+↓
+Carrinhos
+↓
+Checkouts
+↓
+Pedidos
+↓
+Pedidos pagos
+O sistema deverá identificar pontos de perda.
+55. PIXEL
+A plataforma deverá identificar o status do Pixel.
+Exemplo:
+Meta Pixel
+🟢 Funcionando
+Eventos detectados:
+PageView
+ViewContent
+AddToCart
+InitiateCheckout
+Purchase
+
+-- 30 of 59 --
+
+56. CONVERSION API
+Quando disponível na integração Prefiro Delivery, eventos importantes deverão ser enviados
+também server-side.
+Exemplos:
+● ViewContent;
+● AddToCart;
+● InitiateCheckout;
+● Purchase.
+Isso deverá ser integrado à estrutura da Conversion API da Meta.
+57. DIAGNÓSTICO DE TRACKING
+Tela:
+Rastreamento
+Pixel
+🟢 Ativo
+Conversion API
+🟢 Ativa
+Purchase
+🟢 Recebendo eventos
+Último evento
+2 minutos atrás
+Problemas encontrados
+
+-- 31 of 59 --
+
+Nenhum.
+58. CAMPANHAS
+Menu:
+Campanhas
+Listagem simplificada:
+Campanha 	Status Investimento Vendas 	CPA 	ROAS
+Pizza Família 	Ativa R$ 850 	92 	R$ 9,24 7,2
+Combo Weekend Ativa R$ 420 	31 	R$ 13,54 4,8
+59. DETALHE DA CAMPANHA
+Exibir:
+Resultado
+Investimento
+Receita
+ROAS
+CPA
+Público
+Criativos
+Produtos
+Histórico
+
+-- 32 of 59 --
+
+Recomendações IA
+60. ANÁLISE COMPARATIVA
+Permitir:
+Hoje x ontem
+7 dias x 7 dias anteriores
+30 dias x 30 dias anteriores
+Mês atual x mês anterior
+Personalizado.
+61. ALERTAS
+O sistema poderá alertar:
+● campanha rejeitada;
+● anúncio rejeitado;
+● conta com problema;
+● método de pagamento;
+● orçamento finalizando;
+● queda abrupta de performance;
+● aumento de CPA;
+● queda de ROAS;
+● Pixel sem eventos;
+● catálogo com erro;
+● catálogo desatualizado;
+● produto rejeitado;
+● aumento excessivo de frequência.
+62. OPORTUNIDADES
+A IA deverá possuir uma tela específica:
+
+-- 33 of 59 --
+
+Oportunidades
+Exemplo:
+Aumentar investimento
+Campanha "Pizza Família" apresenta ROAS 8,3.
+Potencial: Alto
+Atualizar criativo
+Anúncio "Combo Família" perdeu 31% de CTR nos últimos 10 dias.
+Potencial: Médio
+Criar Lookalike
+Sua empresa possui quantidade suficiente de clientes para testar um público semelhante.
+Potencial: Alto
+63. SCORE DE SAÚDE
+Criar:
+Score de Tráfego
+Exemplo:
+84/100
+Subscores:
+Tracking
+95
+
+-- 34 of 59 --
+
+Campanhas
+82
+Criativos
+71
+Públicos
+86
+Orçamento
+88
+Conversão
+81
+64. HISTÓRICO DE ALTERAÇÕES
+Toda alteração deverá ser auditável.
+Exemplo:
+13/09/2026 — 14:32
+Orçamento alterado.
+De:
+R$ 100/dia
+Para:
+R$ 120/dia
+Origem:
+Inteligência Artificial
+Motivo:
+ROAS acima da meta por 5 dias consecutivos.
+65. ORIGEM DAS ALTERAÇÕES
+
+-- 35 of 59 --
+
+Registrar:
+● usuário;
+● IA;
+● automação;
+● sincronização Meta;
+● administrador.
+66. CENTRO DE APROVAÇÕES
+No modo assistido haverá uma área:
+Aprovações
+Exemplo:
+Aumentar orçamento
+Campanha Pizza Família
+R$ 100 → R$ 120
+Motivo:
+ROAS 37% acima da meta.
+Aprovar
+Recusar
+67. NOTIFICAÇÕES
+Canais previstos:
+Plataforma
+Inicial.
+E-mail
+
+-- 36 of 59 --
+
+Posteriormente.
+WhatsApp
+Muito relevante para o público Prefiro Delivery.
+Push
+Futuro.
+68. MENU PRINCIPAL
+Sugestão:
+Visão geral
+Campanhas
+Criativos
+Públicos
+Catálogo
+Oportunidades
+Relatórios
+Assistente IA
+Automações
+Integrações
+Configurações
+69. ARQUITETURA CONCEITUAL
+A solução deverá possuir pelo menos os seguintes serviços lógicos:
+
+-- 37 of 59 --
+
+Aplicação SaaS
+Interface e regras de negócio.
+Serviço Meta
+Responsável por comunicação com as APIs da Meta.
+Motor de IA
+Análise e recomendações.
+Motor de automações
+Execução de regras.
+Serviço Prefiro Delivery
+Comunicação com dados Prefiro.
+Serviço de catálogo
+Sincronização XML/catalog.
+Jobs
+Processamentos periódicos.
+Analytics
+Consolidação de métricas.
+70. ESTRUTURA DE JOBS
+Deverão existir jobs para:
+Métricas Meta
+Atualização periódica.
+Campanhas
+Sincronização de status.
+
+-- 38 of 59 --
+
+Catálogo Prefiro
+A cada 1 hora.
+Alertas
+Monitoramento contínuo.
+IA
+Análises periódicas.
+Público
+Sincronização quando necessário.
+71. CACHE DE DADOS META
+Evitar que cada tela dependa diretamente da API da Meta.
+Fluxo recomendado:
+Meta API
+↓
+Sincronização
+↓
+Banco interno
+↓
+Dashboard
+Isso melhora:
+● performance;
+● histórico;
+● confiabilidade;
+● comparação;
+● análises de IA.
+
+-- 39 of 59 --
+
+72. ENTIDADES PRINCIPAIS
+Estrutura conceitual de banco:
+empresa
+usuario
+empresa_usuario
+integracao_meta
+meta_business
+meta_ad_account
+meta_page
+meta_instagram
+meta_pixel
+meta_catalogo
+meta_produto
+campanha
+conjunto_anuncio
+anuncio
+criativo
+publico
+campanha_metrica
+conjunto_metrica
+anuncio_metrica
+produto_metrica
+
+-- 40 of 59 --
+
+recomendacao_ia
+automacao
+automacao_execucao
+aprovacao
+alerta
+auditoria
+73. TABELA DE MÉTRICAS
+É importante armazenar snapshots de métricas.
+Exemplo:
+campanha_metrica
+Campos conceituais:
+● campanha_id;
+● data;
+● investimento;
+● impressões;
+● alcance;
+● cliques;
+● CTR;
+● CPC;
+● CPM;
+● frequência;
+● conversões;
+● vendas;
+● receita;
+● CPA;
+● ROAS.
+74. CAMADA DE INTELIGÊNCIA
+
+-- 41 of 59 --
+
+A IA não deverá operar diretamente sobre respostas brutas da Meta.
+Recomendação de arquitetura:
+APIs
+↓
+Normalização
+↓
+Banco analítico
+↓
+Motor de regras
+↓
+IA
+↓
+Recomendação
+↓
+Aprovação
+↓
+Executor Meta
+Essa separação aumenta a segurança.
+75. MOTOR DE RECOMENDAÇÕES
+Cada recomendação deverá possuir:
+● tipo;
+● entidade;
+● análise;
+● motivo;
+● nível de confiança;
+● impacto previsto;
+
+-- 42 of 59 --
+
+● ação sugerida;
+● risco;
+● status.
+Status:
+Nova
+Aprovada
+Recusada
+Executada
+Expirada
+76. SEGURANÇA DA IA
+A Inteligência Artificial não deverá possuir liberdade irrestrita para manipular campanhas.
+O motor deverá possuir uma camada intermediária de validação.
+Exemplo:
+IA sugere:
+aumentar orçamento em 200%.
+Política:
+máximo permitido = 20%.
+Resultado:
+ação bloqueada ou limitada.
+77. GUARDRAILS
+Antes de qualquer execução:
+IA
+
+-- 43 of 59 --
+
+↓
+Policy Engine
+↓
+Limites da empresa
+↓
+Permissão do usuário
+↓
+Validação
+↓
+API Meta
+78. MVP — FASE 1
+O MVP deverá concentrar-se em gerar valor rapidamente.
+Integrações
+● Meta Login;
+● conta de anúncios;
+● página;
+● Instagram;
+● Pixel;
+● Prefiro Delivery.
+Dashboard
+● investimento;
+● vendas;
+● CPA;
+● receita;
+● ROAS;
+● principais campanhas.
+Campanhas
+
+-- 44 of 59 --
+
+● visualizar campanhas;
+● criar campanha de vendas;
+● criar conjunto;
+● criar anúncio;
+● alterar orçamento;
+● pausar/ativar.
+Públicos
+● público geográfico;
+● públicos existentes;
+● Custom Audience;
+● Lookalike Prefiro.
+Criativos
+● imagem;
+● texto;
+● título;
+● CTA;
+● IA para copy.
+IA
+● análise da conta;
+● resumo;
+● oportunidades;
+● recomendações;
+● chat.
+Catálogo
+● conexão com XML Prefiro;
+● atualização automática;
+● sincronização a cada hora;
+● campanhas utilizando catálogo.
+79. FASE 2
+Adicionar:
+
+-- 45 of 59 --
+
+● automações avançadas;
+● modo automático;
+● geração de imagens;
+● alertas WhatsApp;
+● relatórios automáticos;
+● score;
+● fadiga de criativos;
+● testes automáticos;
+● redistribuição de orçamento;
+● regras personalizadas;
+● novos objetivos de campanha.
+80. FASE 3
+Transformar o sistema em uma plataforma genérica.
+Adicionar integrações:
+● Shopify;
+● WooCommerce;
+● Nuvemshop;
+● APIs externas;
+● CRMs;
+● outros e-commerces.
+Criar integração genérica através de:
+API
+Webhook
+Feed
+Pixel
+Conversion API
+81. DIFERENCIAL PREFIRO DELIVERY
+Para clientes Prefiro, o processo deverá ser extremamente simples.
+
+-- 46 of 59 --
+
+Exemplo:
+Divulgar meu delivery
+O sistema já conhece:
+● empresa;
+● site;
+● cardápio;
+● produtos;
+● preços;
+● clientes;
+● compras;
+● ticket;
+● região;
+● histórico.
+O empresário praticamente informa:
+Quanto quero investir?
+e
+O que quero divulgar?
+82. FLUXO IDEAL PREFIRO
+Cliente acessa:
+Marketing → Anúncios
+↓
+Começar
+↓
+Conecta Meta.
+↓
+Sistema identifica ativos.
+↓
+
+-- 47 of 59 --
+
+Importa catálogo.
+↓
+Configura Pixel/CAPI quando aplicável.
+↓
+Analisa clientes.
+↓
+Sugere público.
+↓
+Usuário escolhe investimento.
+↓
+IA cria campanha.
+↓
+Usuário aprova.
+↓
+Campanha publicada.
+83. EXPERIÊNCIA "ANUNCIAR PRODUTO"
+Dentro da Prefiro Delivery futuramente poderá existir:
+Anunciar
+ao lado de um produto.
+Exemplo:
+Pizza Família
+R$ 79,90
+[ Anunciar ]
+
+-- 48 of 59 --
+
+Ao clicar:
+Quanto deseja investir?
+R$ 30/dia
+R$ 50/dia
+R$ 100/dia
+Depois:
+Recomendamos anunciar para pessoas localizadas na sua área de entrega e
+usar como referência clientes semelhantes aos seus melhores compradores.
+Criar campanha
+Isso reduz drasticamente a complexidade para o empresário.
+84. EXPERIÊNCIA "ANUNCIAR CATEGORIA"
+Exemplo:
+Categoria:
+Pizzas
+Botão:
+Anunciar categoria
+A IA cria anúncio de catálogo utilizando os produtos daquela categoria.
+85. EXPERIÊNCIA "ANUNCIAR TODO
+CARDÁPIO"
+Opção:
+Divulgar meu cardápio
+
+-- 49 of 59 --
+
+A campanha utilizará o catálogo sincronizado.
+Os produtos poderão ser apresentados dinamicamente conforme a estratégia aceita pela
+Meta.
+86. METAS DE NEGÓCIO
+O usuário poderá configurar:
+Minha meta
+Exemplo:
+CPA máximo:
+R$ 15
+ROAS mínimo:
+4
+Investimento mensal:
+R$ 3.000
+A IA passa a avaliar campanhas considerando esses objetivos.
+87. META DO SISTEMA
+O produto deverá evoluir de:
+Ferramenta para criar anúncios
+para
+Plataforma inteligente de crescimento através de mídia paga.
+A diferença é importante.
+O sistema não deverá apenas responder:
+Sua campanha teve CTR de 2,4%.
+
+-- 50 of 59 --
+
+Ele deverá responder:
+Sua campanha está saudável e gerando pedidos a R$ 9,80. Como sua meta é
+manter o custo abaixo de R$ 15, existe espaço para aumentar gradualmente o
+investimento.
+88. PRINCÍPIO FUNDAMENTAL DA
+INTERFACE
+A interface deve priorizar:
+Vendas
+Dinheiro investido
+Retorno
+Clientes
+Oportunidades
+e não:
+IDs
+estruturas técnicas
+siglas
+configurações avançadas.
+Informações técnicas poderão existir em uma área:
+Configurações avançadas
+89. POSSÍVEIS NOMES DE
+FUNCIONALIDADES
+Evitar nomes excessivamente técnicos.
+
+-- 51 of 59 --
+
+Exemplo:
+Em vez de:
+Custom Audience
+usar:
+Meus clientes
+Em vez de:
+Lookalike Audience
+usar:
+Pessoas semelhantes aos meus clientes
+Em vez de:
+Ads Insights
+usar:
+Resultados
+Em vez de:
+Creative Fatigue
+usar:
+Anúncio perdendo força
+90. INDICADORES DE SUCESSO DO
+PRODUTO
+Além dos indicadores de anúncios, o SaaS deverá acompanhar:
+Ativação
+% de clientes que conectaram Meta.
+Primeira campanha
+
+-- 52 of 59 --
+
+% que publicaram pelo menos uma campanha.
+Time to First Campaign
+Tempo entre cadastro e primeira campanha.
+Investimento gerenciado
+Valor total administrado pela plataforma.
+Campanhas ativas
+Quantidade.
+Empresas anunciantes
+Quantidade.
+IA
+Quantidade de recomendações aprovadas.
+Automação
+Quantidade de ações executadas.
+Retenção
+Empresas que continuam anunciando.
+91. CONSIDERAÇÕES SOBRE A API META
+Toda integração deverá utilizar APIs oficiais da Meta.
+A implementação deverá acompanhar:
+● versão atual da Graph API;
+● Marketing API;
+● permissões disponíveis;
+● App Review;
+● Business Verification;
+● limites de uso;
+● políticas de anúncios;
+● políticas para Custom Audiences;
+
+-- 53 of 59 --
+
+● requisitos de catálogo;
+● Pixel;
+● Conversion API.
+Como essas regras e endpoints são alterados periodicamente pela Meta, a versão da API e
+os campos definitivos não deverão ficar rigidamente presos a esta documentação funcional.
+A documentação técnica de implementação deverá registrar a versão efetivamente utilizada
+em produção.
+92. ATENÇÃO ESPECIAL — DADOS DE
+CLIENTES
+Como haverá possibilidade de utilizar dados da Prefiro Delivery para criação de audiências,
+deverá existir uma camada específica de governança.
+Antes do envio:
+● validar autorização;
+● normalizar dados;
+● aplicar proteção/hash quando exigido;
+● registrar origem;
+● registrar consentimentos quando aplicável;
+● respeitar LGPD;
+● respeitar os termos da Meta.
+Dados pessoais brutos não deverão ser desnecessariamente expostos à camada de IA.
+93. CONCEITO CENTRAL DO PRODUTO
+O produto pode ser resumido da seguinte maneira:
+O empresário informa o que quer vender e quanto quer investir. A plataforma
+cuida da estratégia, da criação, da publicação, da análise e da otimização das
+campanhas.
+Para clientes Prefiro Delivery, o sistema já possui uma vantagem adicional:
+Ele conhece o negócio, os produtos, as vendas e os clientes.
+
+-- 54 of 59 --
+
+Isso permite transformar dados operacionais reais em inteligência para aquisição de novos
+clientes.
+94. VISÃO DE LONGO PRAZO
+A evolução natural do produto será chegar ao ponto em que o empresário possa dizer:
+Quero aumentar minhas vendas em 20% este mês.
+E o sistema seja capaz de:
+1. analisar histórico;
+2. identificar produtos;
+3. avaliar ticket médio;
+4. calcular investimento;
+5. selecionar campanhas;
+6. definir público;
+7. criar criativos;
+8. publicar anúncios;
+9. acompanhar resultados;
+10. redistribuir orçamento;
+11. criar novos testes;
+12. reportar resultado.
+Nesse estágio, o produto passa efetivamente a funcionar como um:
+Gestor de Tráfego com Inteligência
+Artificial
+95. DEFINIÇÃO DO MVP RECOMENDADO
+Para evitar iniciar o projeto com complexidade excessiva, recomenda-se que a primeira
+versão entregue cinco grandes experiências.
+1. Conectar
+Conectar Meta e Prefiro Delivery.
+
+-- 55 of 59 --
+
+2. Entender
+Dashboard e IA analisam as campanhas existentes.
+3. Criar
+Criar uma campanha de vendas completa.
+4. Anunciar catálogo
+Importar automaticamente o cardápio Prefiro e utilizar produtos na campanha.
+5. Melhorar
+IA identifica oportunidades e recomenda ações.
+Dessa forma, já existe valor completo sem depender inicialmente de autonomia total da IA.
+96. RESUMO DO MVP
+META
+Conectar conta.
+↓
+PREFIRO
+Importar empresa, catálogo, clientes e vendas.
+↓
+IA
+Entender negócio.
+↓
+CAMPANHA
+Criar campanha de vendas.
+↓
+PÚBLICO
+
+-- 56 of 59 --
+
+Criar/selecionar público.
+↓
+LOOKALIKE
+Utilizar clientes Prefiro quando aplicável.
+↓
+CRIATIVO
+Criar anúncio.
+↓
+CATÁLOGO
+Manter produtos sincronizados.
+↓
+PUBLICAR
+Enviar para Meta.
+↓
+ANALISAR
+Ler resultados.
+↓
+RECOMENDAR
+IA sugere melhorias.
+↓
+APROVAR
+Usuário autoriza alterações.
+97. DIRETRIZ DE PRODUTO
+A primeira versão deverá utilizar predominantemente o modelo:
+
+-- 57 of 59 --
+
+IA Assistida
+A IA:
+analisa → recomenda → explica → usuário aprova → sistema executa.
+Depois que houver histórico, confiança e validação das estratégias, poderão ser habilitados
+níveis maiores de automação.
+Essa abordagem reduz risco operacional e facilita a validação inicial do produto.
+98. VISÃO FINAL
+A proposta não é recriar visualmente o Meta Ads Manager.
+A proposta é criar uma nova camada entre o empresário e o Meta Ads.
+Meta Ads
+Possui a infraestrutura publicitária.
+Plataforma
+Possui inteligência, automação e experiência simplificada.
+Prefiro Delivery
+Fornece dados reais do negócio.
+IA
+Transforma esses dados em decisões.
+A combinação cria um produto no qual o empresário deixa de precisar entender gestão de
+tráfego para conseguir anunciar profissionalmente.
+Visão resumida:
+Prefiro Delivery sabe o que o estabelecimento vende.
+Sabe quem compra.
+Sabe quanto compra.
+A Meta sabe encontrar pessoas.
+
+-- 58 of 59 --
+
+A nova plataforma conecta esses dois mundos através da Inteligência
+Artificial.
+
+-- 59 of 59 --
+
