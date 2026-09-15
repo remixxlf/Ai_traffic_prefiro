@@ -22,3 +22,8 @@ next-env.d.ts
 
 # Scratch / Temp
 /scratch/
+
+# Agent / Skills (mantidas globalmente em ~/.gemini/config/skills/)
+/.agents/
+skills-lock.json
+
