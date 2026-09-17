@@ -2,7 +2,6 @@
 import { ref } from 'vue';
 import AppLayout from '@/Layouts/AppLayout.vue';
 import { 
-    ShieldAlert, 
     Flame, 
     CheckCircle2, 
     Pause, 
@@ -72,18 +71,6 @@ const pauseAd = async (criativo) => {
         <template #header>Detecção de Fadiga Criativa & Saúde dos Anúncios</template>
 
         <div class="max-w-7xl mx-auto space-y-6">
-            <!-- PRD Section 51 Info Banner -->
-            <div class="bg-amber-50 border border-amber-200/80 rounded-2xl p-5 flex items-start gap-4">
-                <div class="w-8 h-8 rounded-xl bg-amber-600 text-white flex items-center justify-center shrink-0">
-                    <ShieldAlert class="w-4 h-4" />
-                </div>
-                <div>
-                    <h3 class="text-sm font-bold text-amber-950">Monitoramento Contínuo de Saturação (Regra Seção 51)</h3>
-                    <p class="text-xs text-amber-800/80 mt-1 leading-relaxed">
-                        A plataforma analisa a frequência e a queda percentual do CTR. Criativos com <strong>frequência &gt; 3.5</strong> ou <strong>queda no CTR &gt; 25%</strong> entram em status <strong>FADIGADO</strong> para evitar que seu restaurante queime orçamento com clientes saturados.
-                    </p>
-                </div>
-            </div>
 
             <!-- Creatives Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">

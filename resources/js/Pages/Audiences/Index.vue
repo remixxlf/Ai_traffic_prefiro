@@ -4,12 +4,10 @@ import AppLayout from '@/Layouts/AppLayout.vue';
 import { 
     Users, 
     ShieldCheck, 
-    Sparkles, 
     RefreshCw, 
     CheckCircle2, 
     PlusCircle,
-    MapPin,
-    Lock
+    MapPin
 } from 'lucide-vue-next';
 
 const props = defineProps({
@@ -104,28 +102,6 @@ const handleCreateLookalike = async () => {
                 <span>{{ feedback }}</span>
             </div>
 
-            <!-- LGPD Security & Lookalike Eligibility Banner -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="bg-indigo-50/60 border border-indigo-100 p-5 rounded-2xl flex items-start space-x-3 text-xs">
-                    <Lock class="w-5 h-5 text-indigo-600 shrink-0 mt-0.5" />
-                    <div>
-                        <p class="font-bold text-indigo-950 text-sm mb-1">Proteção de Dados & LGPD</p>
-                        <p class="text-indigo-900/80 leading-relaxed">
-                            Todos os e-mails e telefones de compradores da plataforma Prefiro Delivery são criptografados localmente com <strong>SHA-256</strong> antes de qualquer envio para o Meta Ads. Nenhum dado sensível em texto claro é transmitido.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="bg-emerald-50/60 border border-emerald-100 p-5 rounded-2xl flex items-start space-x-3 text-xs">
-                    <Sparkles class="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
-                    <div>
-                        <p class="font-bold text-emerald-950 text-sm mb-1">Elegibilidade para Lookalike (1%)</p>
-                        <p class="text-emerald-900/80 leading-relaxed">
-                            {{ lookalikeEligibility?.mensagem || 'Base qualificada com mais de 100 compradores nos últimos 90 dias. Seu público semelhante alcança novas pessoas com o mesmo padrão de consumo do seu restaurante.' }}
-                        </p>
-                    </div>
-                </div>
-            </div>
 
             <!-- Audiences Table -->
             <div class="bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-xs">

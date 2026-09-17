@@ -6,7 +6,6 @@ import {
     Play, 
     Pause, 
     Edit3, 
-    ShieldAlert, 
     Check, 
     X,
     TrendingUp,
@@ -92,18 +91,6 @@ const toggleCampaign = async (campanha) => {
         <template #header>Campanhas & Políticas de Segurança</template>
 
         <div class="max-w-7xl mx-auto space-y-6">
-            <!-- Header & Policy Engine info banner -->
-            <div class="bg-indigo-50 border border-indigo-200/80 rounded-2xl p-5 flex items-start gap-4">
-                <div class="w-8 h-8 rounded-xl bg-indigo-600 text-white flex items-center justify-center shrink-0">
-                    <ShieldAlert class="w-4 h-4" />
-                </div>
-                <div>
-                    <h3 class="text-sm font-bold text-indigo-950">Proteção Ativa do Policy Engine</h3>
-                    <p class="text-xs text-indigo-800/80 mt-1 leading-relaxed">
-                        Qualquer alteração de orçamento é validada automaticamente pelas regras do PDF: limite de escala de até <strong>20% por ação</strong>, <strong>cooldown de 24 horas</strong> entre alterações e teto diário do restaurante de <strong>{{ formatMoney(empresa.orcamento_max_diario) }}</strong>.
-                    </p>
-                </div>
-            </div>
 
             <!-- Campaign Table -->
             <div class="bg-white rounded-2xl border border-slate-200/80 shadow-xs overflow-hidden">
